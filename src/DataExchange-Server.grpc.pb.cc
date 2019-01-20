@@ -38,7 +38,3 @@ std::stringstream DXServiceImpl::_sm_file;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::OK, "");
 }
-
-
-
-

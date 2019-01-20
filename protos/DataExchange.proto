@@ -4,7 +4,7 @@ syntax = "proto3";
 package Excercise;
 
 message File {
-	string contents = 1;
+	bytes chunk = 1;
 }
 
 message Parameters {

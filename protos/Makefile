@@ -1,12 +1,18 @@
 PBC=protoc
-CCP=$(shell which grpc_cpp_plugin)
+CCP=../bin/grpc_cpp_plugin
 
 
 PRS_DIR=$(shell pwd) 
 PROTOS=$(wildcard *.proto)
-GENC=$(subst .proto,.pb.cc,$(PROTOS))
-GENH=$(subst .proto,.pb.h,$(PROTOS))
+GEN_SRV_C=$(subst .proto,.grpc.pb.cc,$(PROTOS))
+GEN_SRV_H=$(subst .proto,.grpc.pb.h,$(PROTOS))
+GEN_CLT_C=$(subst .proto,.pb.cc,$(PROTOS))
+GEN_CLT_H=$(subst .proto,.pb.h,$(PROTOS))
 
-$(GENC): $(PROTOS)
+all: $(GEN_SRV_C) $(GEN_SRV_H) $(GEN_CLT_C) $(GEN_CLT_H)
+
+$(GEN_SRV_C) $(GEN_SRV_H): $(PROTOS)
 	$(PBC) -I. --grpc_out=../src/ --plugin=protoc-gen-grpc=$(CCP) $<
+
+$(GEN_CLT_C) $(GEN_CLT_H): $(PROTOS)
 	$(PBC) -I. --cpp_out=../src/ $< 

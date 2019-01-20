@@ -24,6 +24,6 @@ public:
 private:
 	static int _sm_number;
 	static std::string _sm_string;
-	static std::stringstream _sm_file;
+	static std::string _sm_filename;
 };
 

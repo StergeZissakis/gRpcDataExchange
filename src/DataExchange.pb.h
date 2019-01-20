@@ -154,25 +154,25 @@ class File : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   // accessors -------------------------------------------------------
 
-  // string contents = 1;
-  void clear_contents();
-  static const int kContentsFieldNumber = 1;
-  const ::std::string& contents() const;
-  void set_contents(const ::std::string& value);
+  // bytes chunk = 1;
+  void clear_chunk();
+  static const int kChunkFieldNumber = 1;
+  const ::std::string& chunk() const;
+  void set_chunk(const ::std::string& value);
   #if LANG_CXX11
-  void set_contents(::std::string&& value);
+  void set_chunk(::std::string&& value);
   #endif
-  void set_contents(const char* value);
-  void set_contents(const char* value, size_t size);
-  ::std::string* mutable_contents();
-  ::std::string* release_contents();
-  void set_allocated_contents(::std::string* contents);
+  void set_chunk(const char* value);
+  void set_chunk(const void* value, size_t size);
+  ::std::string* mutable_chunk();
+  ::std::string* release_chunk();
+  void set_allocated_chunk(::std::string* chunk);
 
   // @@protoc_insertion_point(class_scope:Excercise.File)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr contents_;
+  ::google::protobuf::internal::ArenaStringPtr chunk_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DataExchange_2eproto::TableStruct;
 };
@@ -401,57 +401,57 @@ class Empty : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 #endif  // __GNUC__
 // File
 
-// string contents = 1;
-inline void File::clear_contents() {
-  contents_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// bytes chunk = 1;
+inline void File::clear_chunk() {
+  chunk_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& File::contents() const {
-  // @@protoc_insertion_point(field_get:Excercise.File.contents)
-  return contents_.GetNoArena();
+inline const ::std::string& File::chunk() const {
+  // @@protoc_insertion_point(field_get:Excercise.File.chunk)
+  return chunk_.GetNoArena();
 }
-inline void File::set_contents(const ::std::string& value) {
+inline void File::set_chunk(const ::std::string& value) {
   
-  contents_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Excercise.File.contents)
+  chunk_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Excercise.File.chunk)
 }
 #if LANG_CXX11
-inline void File::set_contents(::std::string&& value) {
+inline void File::set_chunk(::std::string&& value) {
   
-  contents_.SetNoArena(
+  chunk_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Excercise.File.contents)
+  // @@protoc_insertion_point(field_set_rvalue:Excercise.File.chunk)
 }
 #endif
-inline void File::set_contents(const char* value) {
+inline void File::set_chunk(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  contents_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Excercise.File.contents)
+  chunk_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Excercise.File.chunk)
 }
-inline void File::set_contents(const char* value, size_t size) {
+inline void File::set_chunk(const void* value, size_t size) {
   
-  contents_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  chunk_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Excercise.File.contents)
+  // @@protoc_insertion_point(field_set_pointer:Excercise.File.chunk)
 }
-inline ::std::string* File::mutable_contents() {
+inline ::std::string* File::mutable_chunk() {
   
-  // @@protoc_insertion_point(field_mutable:Excercise.File.contents)
-  return contents_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:Excercise.File.chunk)
+  return chunk_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* File::release_contents() {
-  // @@protoc_insertion_point(field_release:Excercise.File.contents)
+inline ::std::string* File::release_chunk() {
+  // @@protoc_insertion_point(field_release:Excercise.File.chunk)
   
-  return contents_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return chunk_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void File::set_allocated_contents(::std::string* contents) {
-  if (contents != NULL) {
+inline void File::set_allocated_chunk(::std::string* chunk) {
+  if (chunk != NULL) {
     
   } else {
     
   }
-  contents_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), contents);
-  // @@protoc_insertion_point(field_set_allocated:Excercise.File.contents)
+  chunk_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), chunk);
+  // @@protoc_insertion_point(field_set_allocated:Excercise.File.chunk)
 }
 
 // -------------------------------------------------------------------
