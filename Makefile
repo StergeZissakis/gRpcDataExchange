@@ -9,7 +9,8 @@ install: all
 
 clean:
 	$(foreach dir,$(BUILD_DIRECTORIES), $(MAKE) -C $(dir) $@; )
-	rm -f bin/* lib/*
+	cd bin; rm -rf *
+	cd lib; rm -rf *
 
 test: install
 
