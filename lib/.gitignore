@@ -1,5 +1,7 @@
 /*.a
 /*.so
+/lib*
 /cmake
 /pkgconfig
 /potobuf
+.
