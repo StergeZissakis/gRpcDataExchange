@@ -1,0 +1,48 @@
+mkfile_path := $(abspath $(firstword $(MAKEFILE_LIST)))
+current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+basefile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+base_dir := $(dir $(basefile_path))
+
+GCC=c++
+DEBUG=-g
+INCLUDES= -I$(base_dir)include/ -I. -I$(base_dir)src/  
+CPPFLAGS= $(DEBUG) -std=c++11 $(INCLUDES)
+LIB_DIR= $(base_dir)lib/
+STATIC_LIBS=$(addprefix $(LIB_DIR), $(STATICS))
+LDFLAGS=  -pthread
+LDLIBS=  -L$(LIB_DIR)
+
+SRCS=$(wildcard $(SRC_DIR)/*.cpp)
+OBJS=$(subst .cpp,.o,$(SRCS))
+
+
+SRV_SRCS=$(wildcard $(SRC_DIR)/*grpc.pb.cc)
+SRV_OBJS=$(subst .cc,.o,$(SRV_SRCS))
+
+CLT_SRCS=$(wildcard $(SRC_DIR)/*grpc.pb.cc)
+CLT_OBJS=$(subst .cc,.o,$(CLT_SRCS))
+
+all: $(GENC) $(LIB) $(SRV_BIN) $(CLT_BIN) $(BIN)
+
+install: $(BIN) $(LIB) $(SRV_BIN) $(CLT_BIN)
+	$(foreach bin,$(BIN), install $(bin) $(base_dir)/bin/; )
+	$(foreach lib,$(LIB), install $(lib) $(base_dir)/lib/; )
+	$(foreach bin,$(SRV_BIN), install $(bin) $(base_dir)/bin/; )
+	$(foreach bin,$(CLT_BIN), install $(bin) $(base_dir)/bin/; )
+
+clean: 
+	rm -f $(OBJS) $(SRV_OBJS) $(CLT_OBJS) #$(LIB) $(BIN) 
+
+
+$(BIN) : $(OBJS)
+$(SRV_BIN) : $(SRV_OBJS)
+$(CLT_BIN) : $(CLT_OBJS)
+	$(GCC) $^ $(STATIC_LIBS) $(LDFLAGS) $(LDLIBS) -o $@
+
+$(LIB) : $(OBJS)
+	$(GCC) -shared $^ -o $@
+
+$(OBJS): $(SRCS)
+$(SRV_OBJS): $(SRV_SRCS)
+$(CLT_OBJS): $(CLT_SRCS)
+	$(GCC) $(CPPFLAGS) -c $< -o $@

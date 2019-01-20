@@ -1,0 +1,22 @@
+
+syntax = "proto3";
+
+package Excercise;
+
+message File {
+	string contents = 1;
+}
+
+message Parameters {
+	int64 number = 1;
+	string text = 2;
+}
+
+message Empty {}
+
+service DataExchange {
+	rpc GetParameters(Empty) returns (Parameters) {}
+	rpc SetParameters(Parameters) returns(Empty) {}
+	rpc GetFile(Empty) returns (stream File) {}
+	rpc SetFile(stream File) returns (Empty) {}
+}
