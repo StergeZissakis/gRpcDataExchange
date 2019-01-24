@@ -30,6 +30,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/empty.pb.h>
 // @@protoc_insertion_point(includes)
 #define PROTOBUF_INTERNAL_EXPORT_protobuf_DataExchange_2eproto 
 
@@ -38,7 +39,7 @@ namespace protobuf_DataExchange_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[3];
+  static const ::google::protobuf::internal::ParseTable schema[2];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -46,9 +47,6 @@ struct TableStruct {
 void AddDescriptors();
 }  // namespace protobuf_DataExchange_2eproto
 namespace Excercise {
-class Empty;
-class EmptyDefaultTypeInternal;
-extern EmptyDefaultTypeInternal _Empty_default_instance_;
 class File;
 class FileDefaultTypeInternal;
 extern FileDefaultTypeInternal _File_default_instance_;
@@ -58,7 +56,6 @@ extern ParametersDefaultTypeInternal _Parameters_default_instance_;
 }  // namespace Excercise
 namespace google {
 namespace protobuf {
-template<> ::Excercise::Empty* Arena::CreateMaybeMessage<::Excercise::Empty>(Arena*);
 template<> ::Excercise::File* Arena::CreateMaybeMessage<::Excercise::File>(Arena*);
 template<> ::Excercise::Parameters* Arena::CreateMaybeMessage<::Excercise::Parameters>(Arena*);
 }  // namespace protobuf
@@ -154,9 +151,23 @@ class File : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   // accessors -------------------------------------------------------
 
-  // bytes chunk = 1;
+  // string filename = 1;
+  void clear_filename();
+  static const int kFilenameFieldNumber = 1;
+  const ::std::string& filename() const;
+  void set_filename(const ::std::string& value);
+  #if LANG_CXX11
+  void set_filename(::std::string&& value);
+  #endif
+  void set_filename(const char* value);
+  void set_filename(const char* value, size_t size);
+  ::std::string* mutable_filename();
+  ::std::string* release_filename();
+  void set_allocated_filename(::std::string* filename);
+
+  // bytes chunk = 2;
   void clear_chunk();
-  static const int kChunkFieldNumber = 1;
+  static const int kChunkFieldNumber = 2;
   const ::std::string& chunk() const;
   void set_chunk(const ::std::string& value);
   #if LANG_CXX11
@@ -172,6 +183,7 @@ class File : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr filename_;
   ::google::protobuf::internal::ArenaStringPtr chunk_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DataExchange_2eproto::TableStruct;
@@ -294,102 +306,6 @@ class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_poin
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DataExchange_2eproto::TableStruct;
 };
-// -------------------------------------------------------------------
-
-class Empty : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Excercise.Empty) */ {
- public:
-  Empty();
-  virtual ~Empty();
-
-  Empty(const Empty& from);
-
-  inline Empty& operator=(const Empty& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  Empty(Empty&& from) noexcept
-    : Empty() {
-    *this = ::std::move(from);
-  }
-
-  inline Empty& operator=(Empty&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Empty& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Empty* internal_default_instance() {
-    return reinterpret_cast<const Empty*>(
-               &_Empty_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  void Swap(Empty* other);
-  friend void swap(Empty& a, Empty& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline Empty* New() const final {
-    return CreateMaybeMessage<Empty>(NULL);
-  }
-
-  Empty* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Empty>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Empty& from);
-  void MergeFrom(const Empty& from);
-  void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Empty* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:Excercise.Empty)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::protobuf_DataExchange_2eproto::TableStruct;
-};
 // ===================================================================
 
 
@@ -401,7 +317,60 @@ class Empty : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 #endif  // __GNUC__
 // File
 
-// bytes chunk = 1;
+// string filename = 1;
+inline void File::clear_filename() {
+  filename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& File::filename() const {
+  // @@protoc_insertion_point(field_get:Excercise.File.filename)
+  return filename_.GetNoArena();
+}
+inline void File::set_filename(const ::std::string& value) {
+  
+  filename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Excercise.File.filename)
+}
+#if LANG_CXX11
+inline void File::set_filename(::std::string&& value) {
+  
+  filename_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Excercise.File.filename)
+}
+#endif
+inline void File::set_filename(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  filename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Excercise.File.filename)
+}
+inline void File::set_filename(const char* value, size_t size) {
+  
+  filename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Excercise.File.filename)
+}
+inline ::std::string* File::mutable_filename() {
+  
+  // @@protoc_insertion_point(field_mutable:Excercise.File.filename)
+  return filename_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* File::release_filename() {
+  // @@protoc_insertion_point(field_release:Excercise.File.filename)
+  
+  return filename_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void File::set_allocated_filename(::std::string* filename) {
+  if (filename != NULL) {
+    
+  } else {
+    
+  }
+  filename_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), filename);
+  // @@protoc_insertion_point(field_set_allocated:Excercise.File.filename)
+}
+
+// bytes chunk = 2;
 inline void File::clear_chunk() {
   chunk_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -525,15 +494,9 @@ inline void Parameters::set_allocated_text(::std::string* text) {
   // @@protoc_insertion_point(field_set_allocated:Excercise.Parameters.text)
 }
 
-// -------------------------------------------------------------------
-
-// Empty
-
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 

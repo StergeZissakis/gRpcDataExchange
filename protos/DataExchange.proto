@@ -1,22 +1,26 @@
 
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 package Excercise;
 
-message File {
-	bytes chunk = 1;
+message File 
+{
+	string filename = 1;
+	bytes chunk = 2;
 }
 
-message Parameters {
+message Parameters 
+{
 	int64 number = 1;
 	string text = 2;
 }
 
-message Empty {}
-
-service DataExchange {
-	rpc GetParameters(Empty) returns (Parameters) {}
-	rpc SetParameters(Parameters) returns(Empty) {}
-	rpc GetFile(Empty) returns (stream File) {}
-	rpc SetFile(stream File) returns (Empty) {}
+service DataExchange 
+{
+	rpc GetParameters(google.protobuf.Empty) returns (Parameters) {}
+	rpc SetParameters(Parameters) returns(google.protobuf.Empty) {}
+	rpc GetFile(File) returns (stream File) {}
+	rpc SetFile(stream File) returns (google.protobuf.Empty) {}
 }

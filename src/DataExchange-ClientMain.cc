@@ -3,12 +3,18 @@
 #include <sstream>
 #include <string>
 #include <map>
-#include <helper.h>
-#include <DataExchange-Server.grpc.pb.h>
+#include <grpc++/grpc++.h>
+#include <grpc++/server_builder.h>
+#include <DataExchange-Server.h>
 
 #include <unistd.h>
 
 #include <utils/Logger.h>
+
+using grpc::Server;
+using grpc::ServerBuilder;
+using grpc::ServerContext;
+using grpc::Status;
 
 
 void usage()
@@ -66,7 +72,7 @@ int main(int argc, char **argv)
 
 	// Start the server
 	std::string server_address("0.0.0.0:50051");
-	DataExchangeImpl service(;
+	Exercise::DXServiceImpl service;
 
 	grpc::ServerBuilder builder;
 	builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
