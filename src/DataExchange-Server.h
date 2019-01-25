@@ -10,16 +10,16 @@
 namespace Exercise
 {
 	// Server implementation definitions
-	class DXServiceImpl final : public ::Excercise::DataExchange::Service
+	class DXServiceImpl final : public ::Exercise::DataExchange::Service
 	{
 		public:
 			DXServiceImpl() {}
 			virtual ~DXServiceImpl() {}
 
-			::grpc::Status GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Excercise::Parameters* response) override;
-			::grpc::Status SetParameters(::grpc::ServerContext* context, const ::Excercise::Parameters* request, ::google::protobuf::Empty* response) override;
-			::grpc::Status GetFile(::grpc::ServerContext* context, const ::Excercise::File* request, ::grpc::ServerWriter< ::Excercise::File>* writer) override;
-			::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Excercise::File>* reader, ::google::protobuf::Empty* response) override;
+			::grpc::Status GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Exercise::Parameters* response) override;
+			::grpc::Status SetParameters(::grpc::ServerContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response) override;
+			::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override;
+			::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override;
 
 
 		private:

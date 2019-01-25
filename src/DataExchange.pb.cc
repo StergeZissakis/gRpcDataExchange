@@ -19,7 +19,7 @@
 #endif
 // @@protoc_insertion_point(includes)
 
-namespace Excercise {
+namespace Exercise {
 class FileDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<File>
@@ -30,17 +30,17 @@ class ParametersDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<Parameters>
       _instance;
 } _Parameters_default_instance_;
-}  // namespace Excercise
+}  // namespace Exercise
 namespace protobuf_DataExchange_2eproto {
 static void InitDefaultsFile() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Excercise::_File_default_instance_;
-    new (ptr) ::Excercise::File();
+    void* ptr = &::Exercise::_File_default_instance_;
+    new (ptr) ::Exercise::File();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Excercise::File::InitAsDefaultInstance();
+  ::Exercise::File::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_File =
@@ -50,11 +50,11 @@ static void InitDefaultsParameters() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Excercise::_Parameters_default_instance_;
-    new (ptr) ::Excercise::Parameters();
+    void* ptr = &::Exercise::_Parameters_default_instance_;
+    new (ptr) ::Exercise::Parameters();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Excercise::Parameters::InitAsDefaultInstance();
+  ::Exercise::Parameters::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_Parameters =
@@ -69,28 +69,28 @@ void InitDefaults() {
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Excercise::File, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Excercise::File, filename_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Excercise::File, chunk_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, filename_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, chunk_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Excercise::Parameters, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::Parameters, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Excercise::Parameters, number_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Excercise::Parameters, text_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::Parameters, number_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::Parameters, text_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::Excercise::File)},
-  { 7, -1, sizeof(::Excercise::Parameters)},
+  { 0, -1, sizeof(::Exercise::File)},
+  { 7, -1, sizeof(::Exercise::Parameters)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Excercise::_File_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Excercise::_Parameters_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Exercise::_File_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Exercise::_Parameters_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -114,20 +114,20 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\022DataExchange.proto\022\tExcercise\032\033google/"
-      "protobuf/empty.proto\"\'\n\004File\022\020\n\010filename"
-      "\030\001 \001(\t\022\r\n\005chunk\030\002 \001(\014\"*\n\nParameters\022\016\n\006n"
-      "umber\030\001 \001(\003\022\014\n\004text\030\002 \001(\t2\373\001\n\014DataExchan"
-      "ge\022@\n\rGetParameters\022\026.google.protobuf.Em"
-      "pty\032\025.Excercise.Parameters\"\000\022@\n\rSetParam"
-      "eters\022\025.Excercise.Parameters\032\026.google.pr"
-      "otobuf.Empty\"\000\022/\n\007GetFile\022\017.Excercise.Fi"
-      "le\032\017.Excercise.File\"\0000\001\0226\n\007SetFile\022\017.Exc"
-      "ercise.File\032\026.google.protobuf.Empty\"\000(\001b"
-      "\006proto3"
+      "\n\022DataExchange.proto\022\010Exercise\032\033google/p"
+      "rotobuf/empty.proto\"\'\n\004File\022\020\n\010filename\030"
+      "\001 \001(\t\022\r\n\005chunk\030\002 \001(\014\"*\n\nParameters\022\016\n\006nu"
+      "mber\030\001 \001(\003\022\014\n\004text\030\002 \001(\t2\366\001\n\014DataExchang"
+      "e\022\?\n\rGetParameters\022\026.google.protobuf.Emp"
+      "ty\032\024.Exercise.Parameters\"\000\022\?\n\rSetParamet"
+      "ers\022\024.Exercise.Parameters\032\026.google.proto"
+      "buf.Empty\"\000\022-\n\007GetFile\022\016.Exercise.File\032\016"
+      ".Exercise.File\"\0000\001\0225\n\007SetFile\022\016.Exercise"
+      ".File\032\026.google.protobuf.Empty\"\000(\001b\006proto"
+      "3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 407);
+      descriptor, 401);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DataExchange.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
@@ -144,7 +144,7 @@ struct StaticDescriptorInitializer {
   }
 } static_descriptor_initializer;
 }  // namespace protobuf_DataExchange_2eproto
-namespace Excercise {
+namespace Exercise {
 
 // ===================================================================
 
@@ -160,7 +160,7 @@ File::File()
   ::google::protobuf::internal::InitSCC(
       &protobuf_DataExchange_2eproto::scc_info_File.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Excercise.File)
+  // @@protoc_insertion_point(constructor:Exercise.File)
 }
 File::File(const File& from)
   : ::google::protobuf::Message(),
@@ -174,7 +174,7 @@ File::File(const File& from)
   if (from.chunk().size() > 0) {
     chunk_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.chunk_);
   }
-  // @@protoc_insertion_point(copy_constructor:Excercise.File)
+  // @@protoc_insertion_point(copy_constructor:Exercise.File)
 }
 
 void File::SharedCtor() {
@@ -183,7 +183,7 @@ void File::SharedCtor() {
 }
 
 File::~File() {
-  // @@protoc_insertion_point(destructor:Excercise.File)
+  // @@protoc_insertion_point(destructor:Exercise.File)
   SharedDtor();
 }
 
@@ -207,7 +207,7 @@ const File& File::default_instance() {
 
 
 void File::Clear() {
-// @@protoc_insertion_point(message_clear_start:Excercise.File)
+// @@protoc_insertion_point(message_clear_start:Exercise.File)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -221,7 +221,7 @@ bool File::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Excercise.File)
+  // @@protoc_insertion_point(parse_start:Exercise.File)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -236,7 +236,7 @@ bool File::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->filename().data(), static_cast<int>(this->filename().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Excercise.File.filename"));
+            "Exercise.File.filename"));
         } else {
           goto handle_unusual;
         }
@@ -267,17 +267,17 @@ bool File::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Excercise.File)
+  // @@protoc_insertion_point(parse_success:Exercise.File)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Excercise.File)
+  // @@protoc_insertion_point(parse_failure:Exercise.File)
   return false;
 #undef DO_
 }
 
 void File::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Excercise.File)
+  // @@protoc_insertion_point(serialize_start:Exercise.File)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -286,7 +286,7 @@ void File::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->filename().data(), static_cast<int>(this->filename().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Excercise.File.filename");
+      "Exercise.File.filename");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->filename(), output);
   }
@@ -301,13 +301,13 @@ void File::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Excercise.File)
+  // @@protoc_insertion_point(serialize_end:Exercise.File)
 }
 
 ::google::protobuf::uint8* File::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Excercise.File)
+  // @@protoc_insertion_point(serialize_to_array_start:Exercise.File)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -316,7 +316,7 @@ void File::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->filename().data(), static_cast<int>(this->filename().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Excercise.File.filename");
+      "Exercise.File.filename");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->filename(), target);
@@ -333,12 +333,12 @@ void File::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Excercise.File)
+  // @@protoc_insertion_point(serialize_to_array_end:Exercise.File)
   return target;
 }
 
 size_t File::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Excercise.File)
+// @@protoc_insertion_point(message_byte_size_start:Exercise.File)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -366,22 +366,22 @@ size_t File::ByteSizeLong() const {
 }
 
 void File::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Excercise.File)
+// @@protoc_insertion_point(generalized_merge_from_start:Exercise.File)
   GOOGLE_DCHECK_NE(&from, this);
   const File* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const File>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Excercise.File)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Exercise.File)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Excercise.File)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Exercise.File)
     MergeFrom(*source);
   }
 }
 
 void File::MergeFrom(const File& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Excercise.File)
+// @@protoc_insertion_point(class_specific_merge_from_start:Exercise.File)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -398,14 +398,14 @@ void File::MergeFrom(const File& from) {
 }
 
 void File::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Excercise.File)
+// @@protoc_insertion_point(generalized_copy_from_start:Exercise.File)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void File::CopyFrom(const File& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Excercise.File)
+// @@protoc_insertion_point(class_specific_copy_from_start:Exercise.File)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -448,7 +448,7 @@ Parameters::Parameters()
   ::google::protobuf::internal::InitSCC(
       &protobuf_DataExchange_2eproto::scc_info_Parameters.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Excercise.Parameters)
+  // @@protoc_insertion_point(constructor:Exercise.Parameters)
 }
 Parameters::Parameters(const Parameters& from)
   : ::google::protobuf::Message(),
@@ -459,7 +459,7 @@ Parameters::Parameters(const Parameters& from)
     text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
   }
   number_ = from.number_;
-  // @@protoc_insertion_point(copy_constructor:Excercise.Parameters)
+  // @@protoc_insertion_point(copy_constructor:Exercise.Parameters)
 }
 
 void Parameters::SharedCtor() {
@@ -468,7 +468,7 @@ void Parameters::SharedCtor() {
 }
 
 Parameters::~Parameters() {
-  // @@protoc_insertion_point(destructor:Excercise.Parameters)
+  // @@protoc_insertion_point(destructor:Exercise.Parameters)
   SharedDtor();
 }
 
@@ -491,7 +491,7 @@ const Parameters& Parameters::default_instance() {
 
 
 void Parameters::Clear() {
-// @@protoc_insertion_point(message_clear_start:Excercise.Parameters)
+// @@protoc_insertion_point(message_clear_start:Exercise.Parameters)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -505,7 +505,7 @@ bool Parameters::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Excercise.Parameters)
+  // @@protoc_insertion_point(parse_start:Exercise.Parameters)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -534,7 +534,7 @@ bool Parameters::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->text().data(), static_cast<int>(this->text().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Excercise.Parameters.text"));
+            "Exercise.Parameters.text"));
         } else {
           goto handle_unusual;
         }
@@ -553,17 +553,17 @@ bool Parameters::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Excercise.Parameters)
+  // @@protoc_insertion_point(parse_success:Exercise.Parameters)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Excercise.Parameters)
+  // @@protoc_insertion_point(parse_failure:Exercise.Parameters)
   return false;
 #undef DO_
 }
 
 void Parameters::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Excercise.Parameters)
+  // @@protoc_insertion_point(serialize_start:Exercise.Parameters)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -577,7 +577,7 @@ void Parameters::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->text().data(), static_cast<int>(this->text().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Excercise.Parameters.text");
+      "Exercise.Parameters.text");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->text(), output);
   }
@@ -586,13 +586,13 @@ void Parameters::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Excercise.Parameters)
+  // @@protoc_insertion_point(serialize_end:Exercise.Parameters)
 }
 
 ::google::protobuf::uint8* Parameters::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Excercise.Parameters)
+  // @@protoc_insertion_point(serialize_to_array_start:Exercise.Parameters)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -606,7 +606,7 @@ void Parameters::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->text().data(), static_cast<int>(this->text().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Excercise.Parameters.text");
+      "Exercise.Parameters.text");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->text(), target);
@@ -616,12 +616,12 @@ void Parameters::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Excercise.Parameters)
+  // @@protoc_insertion_point(serialize_to_array_end:Exercise.Parameters)
   return target;
 }
 
 size_t Parameters::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Excercise.Parameters)
+// @@protoc_insertion_point(message_byte_size_start:Exercise.Parameters)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -649,22 +649,22 @@ size_t Parameters::ByteSizeLong() const {
 }
 
 void Parameters::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Excercise.Parameters)
+// @@protoc_insertion_point(generalized_merge_from_start:Exercise.Parameters)
   GOOGLE_DCHECK_NE(&from, this);
   const Parameters* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Parameters>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Excercise.Parameters)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Exercise.Parameters)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Excercise.Parameters)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Exercise.Parameters)
     MergeFrom(*source);
   }
 }
 
 void Parameters::MergeFrom(const Parameters& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Excercise.Parameters)
+// @@protoc_insertion_point(class_specific_merge_from_start:Exercise.Parameters)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -680,14 +680,14 @@ void Parameters::MergeFrom(const Parameters& from) {
 }
 
 void Parameters::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Excercise.Parameters)
+// @@protoc_insertion_point(generalized_copy_from_start:Exercise.Parameters)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Parameters::CopyFrom(const Parameters& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Excercise.Parameters)
+// @@protoc_insertion_point(class_specific_copy_from_start:Exercise.Parameters)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -716,14 +716,14 @@ void Parameters::InternalSwap(Parameters* other) {
 
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace Excercise
+}  // namespace Exercise
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Excercise::File* Arena::CreateMaybeMessage< ::Excercise::File >(Arena* arena) {
-  return Arena::CreateInternal< ::Excercise::File >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Exercise::File* Arena::CreateMaybeMessage< ::Exercise::File >(Arena* arena) {
+  return Arena::CreateInternal< ::Exercise::File >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Excercise::Parameters* Arena::CreateMaybeMessage< ::Excercise::Parameters >(Arena* arena) {
-  return Arena::CreateInternal< ::Excercise::Parameters >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Exercise::Parameters* Arena::CreateMaybeMessage< ::Exercise::Parameters >(Arena* arena) {
+  return Arena::CreateInternal< ::Exercise::Parameters >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

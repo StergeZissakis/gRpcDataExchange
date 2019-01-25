@@ -34,10 +34,10 @@ $(BIN) : $(OBJS)
 	$(GCC) $^ $(STATIC_LIBS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(SRV_BIN) : $(SRV_OBJS)
-	$(GCC) $^ $(STATIC_LIBS) $(LDFLAGS) $(LDLIBS) -o $@
+	$(GCC) $(SRV_OBJS) $(STATIC_LIBS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(CLT_BIN) : $(CLT_OBJS)
-	$(GCC) $^ $(STATIC_LIBS) $(LDFLAGS) $(LDLIBS) -o $@
+	$(GCC) $(CLT_OBJS) $(STATIC_LIBS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(LIB) : $(OBJS)
 	$(GCC) -shared $^ -o $@

@@ -3,7 +3,7 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
-package Excercise;
+package Exercise;
 
 message File 
 {

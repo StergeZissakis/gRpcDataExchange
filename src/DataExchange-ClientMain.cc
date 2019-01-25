@@ -3,9 +3,7 @@
 #include <sstream>
 #include <string>
 #include <map>
-#include <grpc++/grpc++.h>
-#include <grpc++/server_builder.h>
-#include <DataExchange-Server.h>
+#include <DataExchange-Client.h>
 
 #include <unistd.h>
 
@@ -71,16 +69,8 @@ int main(int argc, char **argv)
   }
 
 	// Start the server
-	std::string server_address("0.0.0.0:50051");
-	Exercise::DXServiceImpl service;
-
-	grpc::ServerBuilder builder;
-	builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
-	builder.RegisterService(&service);
-	std::unique_ptr<Server> server(builder.BuildAndStart());
-	std::cout << "Server listening on " << server_address << std::endl;
-	server->Wait();
-
+	//std::string server_address("0.0.0.0:50051");
+	
   std::clog.rdbuf(clogBuff);
   return 0;
 }

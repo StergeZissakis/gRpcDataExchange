@@ -46,25 +46,25 @@ struct TableStruct {
 };
 void AddDescriptors();
 }  // namespace protobuf_DataExchange_2eproto
-namespace Excercise {
+namespace Exercise {
 class File;
 class FileDefaultTypeInternal;
 extern FileDefaultTypeInternal _File_default_instance_;
 class Parameters;
 class ParametersDefaultTypeInternal;
 extern ParametersDefaultTypeInternal _Parameters_default_instance_;
-}  // namespace Excercise
+}  // namespace Exercise
 namespace google {
 namespace protobuf {
-template<> ::Excercise::File* Arena::CreateMaybeMessage<::Excercise::File>(Arena*);
-template<> ::Excercise::Parameters* Arena::CreateMaybeMessage<::Excercise::Parameters>(Arena*);
+template<> ::Exercise::File* Arena::CreateMaybeMessage<::Exercise::File>(Arena*);
+template<> ::Exercise::Parameters* Arena::CreateMaybeMessage<::Exercise::Parameters>(Arena*);
 }  // namespace protobuf
 }  // namespace google
-namespace Excercise {
+namespace Exercise {
 
 // ===================================================================
 
-class File : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Excercise.File) */ {
+class File : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Exercise.File) */ {
  public:
   File();
   virtual ~File();
@@ -179,7 +179,7 @@ class File : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::std::string* release_chunk();
   void set_allocated_chunk(::std::string* chunk);
 
-  // @@protoc_insertion_point(class_scope:Excercise.File)
+  // @@protoc_insertion_point(class_scope:Exercise.File)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -190,7 +190,7 @@ class File : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 };
 // -------------------------------------------------------------------
 
-class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Excercise.Parameters) */ {
+class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Exercise.Parameters) */ {
  public:
   Parameters();
   virtual ~Parameters();
@@ -297,7 +297,7 @@ class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::int64 number() const;
   void set_number(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:Excercise.Parameters)
+  // @@protoc_insertion_point(class_scope:Exercise.Parameters)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -322,41 +322,41 @@ inline void File::clear_filename() {
   filename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& File::filename() const {
-  // @@protoc_insertion_point(field_get:Excercise.File.filename)
+  // @@protoc_insertion_point(field_get:Exercise.File.filename)
   return filename_.GetNoArena();
 }
 inline void File::set_filename(const ::std::string& value) {
   
   filename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Excercise.File.filename)
+  // @@protoc_insertion_point(field_set:Exercise.File.filename)
 }
 #if LANG_CXX11
 inline void File::set_filename(::std::string&& value) {
   
   filename_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Excercise.File.filename)
+  // @@protoc_insertion_point(field_set_rvalue:Exercise.File.filename)
 }
 #endif
 inline void File::set_filename(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   filename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Excercise.File.filename)
+  // @@protoc_insertion_point(field_set_char:Exercise.File.filename)
 }
 inline void File::set_filename(const char* value, size_t size) {
   
   filename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Excercise.File.filename)
+  // @@protoc_insertion_point(field_set_pointer:Exercise.File.filename)
 }
 inline ::std::string* File::mutable_filename() {
   
-  // @@protoc_insertion_point(field_mutable:Excercise.File.filename)
+  // @@protoc_insertion_point(field_mutable:Exercise.File.filename)
   return filename_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* File::release_filename() {
-  // @@protoc_insertion_point(field_release:Excercise.File.filename)
+  // @@protoc_insertion_point(field_release:Exercise.File.filename)
   
   return filename_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -367,7 +367,7 @@ inline void File::set_allocated_filename(::std::string* filename) {
     
   }
   filename_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), filename);
-  // @@protoc_insertion_point(field_set_allocated:Excercise.File.filename)
+  // @@protoc_insertion_point(field_set_allocated:Exercise.File.filename)
 }
 
 // bytes chunk = 2;
@@ -375,41 +375,41 @@ inline void File::clear_chunk() {
   chunk_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& File::chunk() const {
-  // @@protoc_insertion_point(field_get:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_get:Exercise.File.chunk)
   return chunk_.GetNoArena();
 }
 inline void File::set_chunk(const ::std::string& value) {
   
   chunk_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_set:Exercise.File.chunk)
 }
 #if LANG_CXX11
 inline void File::set_chunk(::std::string&& value) {
   
   chunk_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_set_rvalue:Exercise.File.chunk)
 }
 #endif
 inline void File::set_chunk(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   chunk_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_set_char:Exercise.File.chunk)
 }
 inline void File::set_chunk(const void* value, size_t size) {
   
   chunk_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_set_pointer:Exercise.File.chunk)
 }
 inline ::std::string* File::mutable_chunk() {
   
-  // @@protoc_insertion_point(field_mutable:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_mutable:Exercise.File.chunk)
   return chunk_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* File::release_chunk() {
-  // @@protoc_insertion_point(field_release:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_release:Exercise.File.chunk)
   
   return chunk_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -420,7 +420,7 @@ inline void File::set_allocated_chunk(::std::string* chunk) {
     
   }
   chunk_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), chunk);
-  // @@protoc_insertion_point(field_set_allocated:Excercise.File.chunk)
+  // @@protoc_insertion_point(field_set_allocated:Exercise.File.chunk)
 }
 
 // -------------------------------------------------------------------
@@ -432,13 +432,13 @@ inline void Parameters::clear_number() {
   number_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 Parameters::number() const {
-  // @@protoc_insertion_point(field_get:Excercise.Parameters.number)
+  // @@protoc_insertion_point(field_get:Exercise.Parameters.number)
   return number_;
 }
 inline void Parameters::set_number(::google::protobuf::int64 value) {
   
   number_ = value;
-  // @@protoc_insertion_point(field_set:Excercise.Parameters.number)
+  // @@protoc_insertion_point(field_set:Exercise.Parameters.number)
 }
 
 // string text = 2;
@@ -446,41 +446,41 @@ inline void Parameters::clear_text() {
   text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Parameters::text() const {
-  // @@protoc_insertion_point(field_get:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_get:Exercise.Parameters.text)
   return text_.GetNoArena();
 }
 inline void Parameters::set_text(const ::std::string& value) {
   
   text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_set:Exercise.Parameters.text)
 }
 #if LANG_CXX11
 inline void Parameters::set_text(::std::string&& value) {
   
   text_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_set_rvalue:Exercise.Parameters.text)
 }
 #endif
 inline void Parameters::set_text(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_set_char:Exercise.Parameters.text)
 }
 inline void Parameters::set_text(const char* value, size_t size) {
   
   text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_set_pointer:Exercise.Parameters.text)
 }
 inline ::std::string* Parameters::mutable_text() {
   
-  // @@protoc_insertion_point(field_mutable:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_mutable:Exercise.Parameters.text)
   return text_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Parameters::release_text() {
-  // @@protoc_insertion_point(field_release:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_release:Exercise.Parameters.text)
   
   return text_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -491,7 +491,7 @@ inline void Parameters::set_allocated_text(::std::string* text) {
     
   }
   text_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), text);
-  // @@protoc_insertion_point(field_set_allocated:Excercise.Parameters.text)
+  // @@protoc_insertion_point(field_set_allocated:Exercise.Parameters.text)
 }
 
 #ifdef __GNUC__
@@ -502,7 +502,7 @@ inline void Parameters::set_allocated_text(::std::string* text) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace Excercise
+}  // namespace Exercise
 
 // @@protoc_insertion_point(global_scope)
 

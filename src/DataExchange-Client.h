@@ -1,31 +1,35 @@
-#ifndef ___DATAX_SERVER__HH__
-#define ___DATAX_SERVER__HH__
+#ifndef ___DATAX_CLIENT__HH__
+#define ___DATAX_CLIENT__HH__
 
 #include <string>
-#include <sstream>
+#include <sstream>	
+#include <memory>
 
-//#include <DataExchange.pb.h>
+#include <grpc++/grpc++.h>
 #include <DataExchange.grpc.pb.h>
 
-namespace Exercise
+Exercise::File MakeFile(const std::string& name);
+Exercise::Parameters MakeParameters(long long numeric, const std::string& str);
+
+class DXServiceClient 
 {
-	// Server implementation definitions
-	class DXServiceImpl final : public ::Excercise::DataExchange::Service
-	{
-		public:
-			DXServiceImpl() {}
-			virtual ~DXServiceImpl() {}
+	public:
+		DXServiceClient() {}
 
-			::grpc::Status GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Excercise::Parameters* response) override;
-			::grpc::Status SetParameters(::grpc::ServerContext* context, const ::Excercise::Parameters* request, ::google::protobuf::Empty* response) override;
-			::grpc::Status GetFile(::grpc::ServerContext* context, const ::Excercise::File* request, ::grpc::ServerWriter< ::Excercise::File>* writer) override;
-			::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Excercise::File>* reader, ::google::protobuf::Empty* response) override;
+		virtual ~DXServiceClient() {}
 
+		bool connectToServer();
 
-		private:
-			static int _sm_number;
-			static std::string _sm_string;
-	};
-}
+		bool SetParameters(long long num, const std::string& str) const;
+		bool GetParameters(long long& num, std::string& str) const;
+
+		static google::protobuf::Empty EmptyObj;
+	private:
+		typedef ::Exercise::DataExchange::Stub StubType;
+		typedef ::grpc::Channel ChannelType;
+		std::shared_ptr<ChannelType> _connection;
+		std::unique_ptr<StubType> _stub;
+
+};
 
 #endif

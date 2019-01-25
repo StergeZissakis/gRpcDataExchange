@@ -10,7 +10,7 @@ namespace Exercise
 	int DXServiceImpl::_sm_number = 0;
 	std::string DXServiceImpl::_sm_string;
 
-	::grpc::Status DXServiceImpl::GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Excercise::Parameters* response) 
+	::grpc::Status DXServiceImpl::GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Exercise::Parameters* response) 
 	{
 		(void) context;
 		(void) request;
@@ -19,7 +19,7 @@ namespace Exercise
 		return ::grpc::Status(::grpc::StatusCode::OK, "");
 	}
 
-	::grpc::Status DXServiceImpl::SetParameters(::grpc::ServerContext* context, const ::Excercise::Parameters* request, ::google::protobuf::Empty* response)  
+	::grpc::Status DXServiceImpl::SetParameters(::grpc::ServerContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response)  
 	{
 		(void) context;
 		(void) response;
@@ -29,7 +29,7 @@ namespace Exercise
 		return ::grpc::Status(::grpc::StatusCode::OK, "");
 	}
 
-	::grpc::Status DXServiceImpl::GetFile(::grpc::ServerContext* context, const ::Excercise::File* request, ::grpc::ServerWriter< ::Excercise::File>* writer)  
+	::grpc::Status DXServiceImpl::GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer)  
 	{
 		(void) context;
 		(void) request;
@@ -47,7 +47,7 @@ namespace Exercise
 		return ::grpc::Status(::grpc::StatusCode::OK, "");
 	}
 
-	::grpc::Status DXServiceImpl::SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Excercise::File>* reader, ::google::protobuf::Empty* response)  
+	::grpc::Status DXServiceImpl::SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response)  
 	{
 		(void) context;
 		(void) reader;
