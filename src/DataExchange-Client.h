@@ -25,6 +25,8 @@ class DXServiceClient
 
 		bool SetParameters(long long num, const std::string& str) const;
 		bool GetParameters(long long& num, std::string& str) const;
+		bool UploadFile(const std::string& filename);
+		bool DownloadFile(const std::string& filename);
 
 		static google::protobuf::Empty EmptyObj;
 	private:

@@ -21,6 +21,6 @@ service DataExchange
 {
 	rpc GetParameters(google.protobuf.Empty) returns (Parameters) {}
 	rpc SetParameters(Parameters) returns(google.protobuf.Empty) {}
-	rpc GetFile(File) returns (stream File) {}
-	rpc SetFile(stream File) returns (google.protobuf.Empty) {}
+	rpc DownloadFile(File) returns (stream File) {}
+	rpc UploadFile(stream File) returns (google.protobuf.Empty) {}
 }

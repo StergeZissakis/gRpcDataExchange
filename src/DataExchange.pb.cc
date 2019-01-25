@@ -117,17 +117,17 @@ void AddDescriptorsImpl() {
       "\n\022DataExchange.proto\022\010Exercise\032\033google/p"
       "rotobuf/empty.proto\"\'\n\004File\022\020\n\010filename\030"
       "\001 \001(\t\022\r\n\005chunk\030\002 \001(\014\"*\n\nParameters\022\016\n\006nu"
-      "mber\030\001 \001(\003\022\014\n\004text\030\002 \001(\t2\366\001\n\014DataExchang"
+      "mber\030\001 \001(\003\022\014\n\004text\030\002 \001(\t2\376\001\n\014DataExchang"
       "e\022\?\n\rGetParameters\022\026.google.protobuf.Emp"
       "ty\032\024.Exercise.Parameters\"\000\022\?\n\rSetParamet"
       "ers\022\024.Exercise.Parameters\032\026.google.proto"
-      "buf.Empty\"\000\022-\n\007GetFile\022\016.Exercise.File\032\016"
-      ".Exercise.File\"\0000\001\0225\n\007SetFile\022\016.Exercise"
-      ".File\032\026.google.protobuf.Empty\"\000(\001b\006proto"
-      "3"
+      "buf.Empty\"\000\0222\n\014DownloadFile\022\016.Exercise.F"
+      "ile\032\016.Exercise.File\"\0000\001\0228\n\nUploadFile\022\016."
+      "Exercise.File\032\026.google.protobuf.Empty\"\000("
+      "\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 401);
+      descriptor, 409);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DataExchange.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();

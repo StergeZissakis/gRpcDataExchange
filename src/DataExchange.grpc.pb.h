@@ -51,31 +51,31 @@ class DataExchange final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncSetParameters(::grpc::ClientContext* context, const ::Exercise::Parameters& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncSetParametersRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::Exercise::File>> GetFile(::grpc::ClientContext* context, const ::Exercise::File& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::Exercise::File>>(GetFileRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::Exercise::File>> DownloadFile(::grpc::ClientContext* context, const ::Exercise::File& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::Exercise::File>>(DownloadFileRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>> AsyncGetFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>>(AsyncGetFileRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>> AsyncDownloadFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>>(AsyncDownloadFileRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>> PrepareAsyncGetFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>>(PrepareAsyncGetFileRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>> PrepareAsyncDownloadFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Exercise::File>>(PrepareAsyncDownloadFileRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientWriterInterface< ::Exercise::File>> SetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response) {
-      return std::unique_ptr< ::grpc::ClientWriterInterface< ::Exercise::File>>(SetFileRaw(context, response));
+    std::unique_ptr< ::grpc::ClientWriterInterface< ::Exercise::File>> UploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response) {
+      return std::unique_ptr< ::grpc::ClientWriterInterface< ::Exercise::File>>(UploadFileRaw(context, response));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>> AsyncSetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>>(AsyncSetFileRaw(context, response, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>> AsyncUploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>>(AsyncUploadFileRaw(context, response, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>> PrepareAsyncSetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>>(PrepareAsyncSetFileRaw(context, response, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>> PrepareAsyncUploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Exercise::File>>(PrepareAsyncUploadFileRaw(context, response, cq));
     }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
       virtual void GetParameters(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::Exercise::Parameters* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetParameters(::grpc::ClientContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetFile(::grpc::ClientContext* context, ::Exercise::File* request, ::grpc::experimental::ClientReadReactor< ::Exercise::File>* reactor) = 0;
-      virtual void SetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::experimental::ClientWriteReactor< ::Exercise::File>* reactor) = 0;
+      virtual void DownloadFile(::grpc::ClientContext* context, ::Exercise::File* request, ::grpc::experimental::ClientReadReactor< ::Exercise::File>* reactor) = 0;
+      virtual void UploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::experimental::ClientWriteReactor< ::Exercise::File>* reactor) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
@@ -83,12 +83,12 @@ class DataExchange final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::Exercise::Parameters>* PrepareAsyncGetParametersRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetParametersRaw(::grpc::ClientContext* context, const ::Exercise::Parameters& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetParametersRaw(::grpc::ClientContext* context, const ::Exercise::Parameters& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::Exercise::File>* GetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::Exercise::File>* AsyncGetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::Exercise::File>* PrepareAsyncGetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientWriterInterface< ::Exercise::File>* SetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response) = 0;
-    virtual ::grpc::ClientAsyncWriterInterface< ::Exercise::File>* AsyncSetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncWriterInterface< ::Exercise::File>* PrepareAsyncSetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::Exercise::File>* DownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::Exercise::File>* AsyncDownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::Exercise::File>* PrepareAsyncDownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientWriterInterface< ::Exercise::File>* UploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response) = 0;
+    virtual ::grpc::ClientAsyncWriterInterface< ::Exercise::File>* AsyncUploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncWriterInterface< ::Exercise::File>* PrepareAsyncUploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -107,31 +107,31 @@ class DataExchange final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncSetParameters(::grpc::ClientContext* context, const ::Exercise::Parameters& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncSetParametersRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::Exercise::File>> GetFile(::grpc::ClientContext* context, const ::Exercise::File& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::Exercise::File>>(GetFileRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReader< ::Exercise::File>> DownloadFile(::grpc::ClientContext* context, const ::Exercise::File& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::Exercise::File>>(DownloadFileRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>> AsyncGetFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>>(AsyncGetFileRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>> AsyncDownloadFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>>(AsyncDownloadFileRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>> PrepareAsyncGetFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>>(PrepareAsyncGetFileRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>> PrepareAsyncDownloadFile(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Exercise::File>>(PrepareAsyncDownloadFileRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientWriter< ::Exercise::File>> SetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response) {
-      return std::unique_ptr< ::grpc::ClientWriter< ::Exercise::File>>(SetFileRaw(context, response));
+    std::unique_ptr< ::grpc::ClientWriter< ::Exercise::File>> UploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response) {
+      return std::unique_ptr< ::grpc::ClientWriter< ::Exercise::File>>(UploadFileRaw(context, response));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>> AsyncSetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>>(AsyncSetFileRaw(context, response, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>> AsyncUploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>>(AsyncUploadFileRaw(context, response, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>> PrepareAsyncSetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>>(PrepareAsyncSetFileRaw(context, response, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>> PrepareAsyncUploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::Exercise::File>>(PrepareAsyncUploadFileRaw(context, response, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
       void GetParameters(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::Exercise::Parameters* response, std::function<void(::grpc::Status)>) override;
       void SetParameters(::grpc::ClientContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void GetFile(::grpc::ClientContext* context, ::Exercise::File* request, ::grpc::experimental::ClientReadReactor< ::Exercise::File>* reactor) override;
-      void SetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::experimental::ClientWriteReactor< ::Exercise::File>* reactor) override;
+      void DownloadFile(::grpc::ClientContext* context, ::Exercise::File* request, ::grpc::experimental::ClientReadReactor< ::Exercise::File>* reactor) override;
+      void UploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::experimental::ClientWriteReactor< ::Exercise::File>* reactor) override;
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -147,16 +147,16 @@ class DataExchange final {
     ::grpc::ClientAsyncResponseReader< ::Exercise::Parameters>* PrepareAsyncGetParametersRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetParametersRaw(::grpc::ClientContext* context, const ::Exercise::Parameters& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetParametersRaw(::grpc::ClientContext* context, const ::Exercise::Parameters& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReader< ::Exercise::File>* GetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request) override;
-    ::grpc::ClientAsyncReader< ::Exercise::File>* AsyncGetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::Exercise::File>* PrepareAsyncGetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientWriter< ::Exercise::File>* SetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response) override;
-    ::grpc::ClientAsyncWriter< ::Exercise::File>* AsyncSetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncWriter< ::Exercise::File>* PrepareAsyncSetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::Exercise::File>* DownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request) override;
+    ::grpc::ClientAsyncReader< ::Exercise::File>* AsyncDownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::Exercise::File>* PrepareAsyncDownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientWriter< ::Exercise::File>* UploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response) override;
+    ::grpc::ClientAsyncWriter< ::Exercise::File>* AsyncUploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncWriter< ::Exercise::File>* PrepareAsyncUploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetParameters_;
     const ::grpc::internal::RpcMethod rpcmethod_SetParameters_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetFile_;
-    const ::grpc::internal::RpcMethod rpcmethod_SetFile_;
+    const ::grpc::internal::RpcMethod rpcmethod_DownloadFile_;
+    const ::grpc::internal::RpcMethod rpcmethod_UploadFile_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -166,8 +166,8 @@ class DataExchange final {
     virtual ~Service();
     virtual ::grpc::Status GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Exercise::Parameters* response);
     virtual ::grpc::Status SetParameters(::grpc::ServerContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response);
-    virtual ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer);
-    virtual ::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer);
+    virtual ::grpc::Status UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetParameters : public BaseClass {
@@ -210,46 +210,46 @@ class DataExchange final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_GetFile : public BaseClass {
+  class WithAsyncMethod_DownloadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithAsyncMethod_GetFile() {
+    WithAsyncMethod_DownloadFile() {
       ::grpc::Service::MarkMethodAsync(2);
     }
-    ~WithAsyncMethod_GetFile() override {
+    ~WithAsyncMethod_DownloadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
+    ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetFile(::grpc::ServerContext* context, ::Exercise::File* request, ::grpc::ServerAsyncWriter< ::Exercise::File>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestDownloadFile(::grpc::ServerContext* context, ::Exercise::File* request, ::grpc::ServerAsyncWriter< ::Exercise::File>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_SetFile : public BaseClass {
+  class WithAsyncMethod_UploadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithAsyncMethod_SetFile() {
+    WithAsyncMethod_UploadFile() {
       ::grpc::Service::MarkMethodAsync(3);
     }
-    ~WithAsyncMethod_SetFile() override {
+    ~WithAsyncMethod_UploadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
+    ::grpc::Status UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetFile(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::google::protobuf::Empty, ::Exercise::File>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestUploadFile(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::google::protobuf::Empty, ::Exercise::File>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncClientStreaming(3, context, reader, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetParameters<WithAsyncMethod_SetParameters<WithAsyncMethod_GetFile<WithAsyncMethod_SetFile<Service > > > > AsyncService;
+  typedef WithAsyncMethod_GetParameters<WithAsyncMethod_SetParameters<WithAsyncMethod_DownloadFile<WithAsyncMethod_UploadFile<Service > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetParameters : public BaseClass {
    private:
@@ -301,50 +301,50 @@ class DataExchange final {
     virtual void SetParameters(::grpc::ServerContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_GetFile : public BaseClass {
+  class ExperimentalWithCallbackMethod_DownloadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    ExperimentalWithCallbackMethod_GetFile() {
+    ExperimentalWithCallbackMethod_DownloadFile() {
       ::grpc::Service::experimental().MarkMethodCallback(2,
         new ::grpc::internal::CallbackServerStreamingHandler< ::Exercise::File, ::Exercise::File>(
-          [this] { return this->GetFile(); }));
+          [this] { return this->DownloadFile(); }));
     }
-    ~ExperimentalWithCallbackMethod_GetFile() override {
+    ~ExperimentalWithCallbackMethod_DownloadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
+    ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerWriteReactor< ::Exercise::File, ::Exercise::File>* GetFile() {
+    virtual ::grpc::experimental::ServerWriteReactor< ::Exercise::File, ::Exercise::File>* DownloadFile() {
       return new ::grpc::internal::UnimplementedWriteReactor<
         ::Exercise::File, ::Exercise::File>;}
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_SetFile : public BaseClass {
+  class ExperimentalWithCallbackMethod_UploadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    ExperimentalWithCallbackMethod_SetFile() {
+    ExperimentalWithCallbackMethod_UploadFile() {
       ::grpc::Service::experimental().MarkMethodCallback(3,
         new ::grpc::internal::CallbackClientStreamingHandler< ::Exercise::File, ::google::protobuf::Empty>(
-          [this] { return this->SetFile(); }));
+          [this] { return this->UploadFile(); }));
     }
-    ~ExperimentalWithCallbackMethod_SetFile() override {
+    ~ExperimentalWithCallbackMethod_UploadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
+    ::grpc::Status UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::Exercise::File, ::google::protobuf::Empty>* SetFile() {
+    virtual ::grpc::experimental::ServerReadReactor< ::Exercise::File, ::google::protobuf::Empty>* UploadFile() {
       return new ::grpc::internal::UnimplementedReadReactor<
         ::Exercise::File, ::google::protobuf::Empty>;}
   };
-  typedef ExperimentalWithCallbackMethod_GetParameters<ExperimentalWithCallbackMethod_SetParameters<ExperimentalWithCallbackMethod_GetFile<ExperimentalWithCallbackMethod_SetFile<Service > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_GetParameters<ExperimentalWithCallbackMethod_SetParameters<ExperimentalWithCallbackMethod_DownloadFile<ExperimentalWithCallbackMethod_UploadFile<Service > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetParameters : public BaseClass {
    private:
@@ -380,35 +380,35 @@ class DataExchange final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_GetFile : public BaseClass {
+  class WithGenericMethod_DownloadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithGenericMethod_GetFile() {
+    WithGenericMethod_DownloadFile() {
       ::grpc::Service::MarkMethodGeneric(2);
     }
-    ~WithGenericMethod_GetFile() override {
+    ~WithGenericMethod_DownloadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
+    ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_SetFile : public BaseClass {
+  class WithGenericMethod_UploadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithGenericMethod_SetFile() {
+    WithGenericMethod_UploadFile() {
       ::grpc::Service::MarkMethodGeneric(3);
     }
-    ~WithGenericMethod_SetFile() override {
+    ~WithGenericMethod_UploadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
+    ::grpc::Status UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -454,42 +454,42 @@ class DataExchange final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_GetFile : public BaseClass {
+  class WithRawMethod_DownloadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithRawMethod_GetFile() {
+    WithRawMethod_DownloadFile() {
       ::grpc::Service::MarkMethodRaw(2);
     }
-    ~WithRawMethod_GetFile() override {
+    ~WithRawMethod_DownloadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
+    ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetFile(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestDownloadFile(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_SetFile : public BaseClass {
+  class WithRawMethod_UploadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithRawMethod_SetFile() {
+    WithRawMethod_UploadFile() {
       ::grpc::Service::MarkMethodRaw(3);
     }
-    ~WithRawMethod_SetFile() override {
+    ~WithRawMethod_UploadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
+    ::grpc::Status UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetFile(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestUploadFile(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncClientStreaming(3, context, reader, new_call_cq, notification_cq, tag);
     }
   };
@@ -544,46 +544,46 @@ class DataExchange final {
     virtual void SetParameters(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_GetFile : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_DownloadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    ExperimentalWithRawCallbackMethod_GetFile() {
+    ExperimentalWithRawCallbackMethod_DownloadFile() {
       ::grpc::Service::experimental().MarkMethodRawCallback(2,
         new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this] { return this->GetFile(); }));
+          [this] { return this->DownloadFile(); }));
     }
-    ~ExperimentalWithRawCallbackMethod_GetFile() override {
+    ~ExperimentalWithRawCallbackMethod_DownloadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
+    ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerWriteReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* GetFile() {
+    virtual ::grpc::experimental::ServerWriteReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* DownloadFile() {
       return new ::grpc::internal::UnimplementedWriteReactor<
         ::grpc::ByteBuffer, ::grpc::ByteBuffer>;}
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_SetFile : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_UploadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    ExperimentalWithRawCallbackMethod_SetFile() {
+    ExperimentalWithRawCallbackMethod_UploadFile() {
       ::grpc::Service::experimental().MarkMethodRawCallback(3,
         new ::grpc::internal::CallbackClientStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this] { return this->SetFile(); }));
+          [this] { return this->UploadFile(); }));
     }
-    ~ExperimentalWithRawCallbackMethod_SetFile() override {
+    ~ExperimentalWithRawCallbackMethod_UploadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
+    ::grpc::Status UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* SetFile() {
+    virtual ::grpc::experimental::ServerReadReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* UploadFile() {
       return new ::grpc::internal::UnimplementedReadReactor<
         ::grpc::ByteBuffer, ::grpc::ByteBuffer>;}
   };
@@ -629,27 +629,27 @@ class DataExchange final {
   };
   typedef WithStreamedUnaryMethod_GetParameters<WithStreamedUnaryMethod_SetParameters<Service > > StreamedUnaryService;
   template <class BaseClass>
-  class WithSplitStreamingMethod_GetFile : public BaseClass {
+  class WithSplitStreamingMethod_DownloadFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithSplitStreamingMethod_GetFile() {
+    WithSplitStreamingMethod_DownloadFile() {
       ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::SplitServerStreamingHandler< ::Exercise::File, ::Exercise::File>(std::bind(&WithSplitStreamingMethod_GetFile<BaseClass>::StreamedGetFile, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::SplitServerStreamingHandler< ::Exercise::File, ::Exercise::File>(std::bind(&WithSplitStreamingMethod_DownloadFile<BaseClass>::StreamedDownloadFile, this, std::placeholders::_1, std::placeholders::_2)));
     }
-    ~WithSplitStreamingMethod_GetFile() override {
+    ~WithSplitStreamingMethod_DownloadFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
+    ::grpc::Status DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedGetFile(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::Exercise::File,::Exercise::File>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedDownloadFile(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::Exercise::File,::Exercise::File>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_GetFile<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetParameters<WithStreamedUnaryMethod_SetParameters<WithSplitStreamingMethod_GetFile<Service > > > StreamedService;
+  typedef WithSplitStreamingMethod_DownloadFile<Service > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetParameters<WithStreamedUnaryMethod_SetParameters<WithSplitStreamingMethod_DownloadFile<Service > > > StreamedService;
 };
 
 }  // namespace Exercise

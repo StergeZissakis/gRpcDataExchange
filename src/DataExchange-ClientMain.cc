@@ -21,9 +21,14 @@ void usage()
   log.log("Invalida command line parameter.");
 
   std::cout 
-    << "grpcClient -i [IP address] -p [port]" << std::endl
-    << "  -i = The IP address to connect to." << std::endl
-    << "  -p = The port to connect to." << std::endl;
+    << "grpcClient -i [IP address] -p [port] -num [number] -text [string] -f [filename]" << std::endl
+    << "  -i    = The IP address to connect to." << std::endl
+    << "  -p    = The port to connect to." << std::endl
+    << "  -num  = The number to pass to the server." << std::endl
+    << "  -text = The string-text to pass to the server." << std::endl
+    << "  -uf   = The name of the file to upload to the server." << std::endl
+    << "  -df   = The name of the file to download from the server." << std::endl;
+
     exit(-100);
 }
 
@@ -45,6 +50,10 @@ int main(int argc, char **argv)
 		{ 
 			{"-i", "localhost"},
 			{"-p", "50051"}, 
+			{"-num", "5"}, 
+			{"-text", "Sterge"}, 
+			{"-uf", ""}, 
+			{"-df", ""}, 
 		};
 
 		{ // parse args
@@ -72,49 +81,71 @@ int main(int argc, char **argv)
 		DXServiceClient client(params["-i"],std::atoi(params["-p"].c_str()));
 		if( client.connectToServer() )
 		{
-			std::clog << "Connect to [" << connStr.str() << " successfull\n";
+			log.log("Connected to: " + connStr.str());
 			long long i = 0;
 			std::string t("");
 			if( client.GetParameters(i, t) )
 			{
-				std::clog	<< "Initially read parameters [" << i << "] and [" << t << "] from server\n";
+				log.log("Initially read parameters [" + std::to_string(i) + std::string("] and [") + t + std::string("] from server"));
 				std::cout	<< "Server initially returned parameters as [" << i << "] and [" << t << "]\n";
 			}
 			else
 			{
-				std::clog << "Failed to retrieve initial values\n";
+				log.log("Failed to retrieve initial values");
 				std::cout << "Initial values retrieval Faield!\n";
 				return -2;
 			}
-			if( client.SetParameters(5, "Sterge") )
+			if( client.SetParameters(std::atoi(params["-num"].c_str()), params["-text"] ) )
 			{
-				std::clog << "Parameters set successfull to [5] & [Sterge]\n";
-				std::cout << "Set number to [5] and text to [Sterge]\n";
+				log.log("Parameters set successfull to [" + params["-num"] + std::string("] & [") +  params["-text"]);
+				std::cout << "Set number to [" << params["-num"] << "] & [" << params["-text"] << "]\n";
 			}
 			else
 			{
-				std::clog << "Failed to set parameters\n";
+				log.log("Failed to set parameters");
 				std::cout << "Parameter setting Faield!\n";
 				return -3;
 			}
 			if( client.GetParameters(i, t) )
 			{
-				std::clog	<< "Read parameters [" << i << "] and [" << t << "] from server\n";
+				log.log("Read parameters [" + std::to_string(i) + std::string("] and [") + t + std::string("] from server"));
 				std::cout	<< "Server returned parameters as [" << i << "] and [" << t << "]\n";
 			}
 			else
 			{
-				std::clog << "Failed to retrieve parameters\n";
+				log.log("Failed to retrieve parameters");
 				std::cout << "Parameter retrieval Faield!\n";
 				return -4;
+			}
+
+			// Upload a file
+			if( params["-uf"].size() ) 
+			{
+				std::cout << "Uploading file : " << params["-uf"] << "\n";
+				if( !client.UploadFile(params["-uf"])) 
+					log.log("Failed to upload file : " + params["-uf"]);
+				else
+					log.log("Uploaded file : " + params["-uf"]);
+			}
+
+			// Download a file
+			if( params["-df"].size() ) 
+			{
+				std::cout << "Downloading file : " << params["-df"] << "\n";
+				if( !client.DownloadFile(params["-df"])) 
+					log.log("Failed to download file : " + params["-uf"]);
+				else
+					log.log("Downloaded file : " +  params["-df"]);
 			}
 		}
 		else
 		{
-			std::clog << "Failed to connect to server @ " << connStr.str() << "\n";
+			log.log("Failed to connect to server @ " + connStr.str());
 			std::cout << "Connection to server Failed @ " << connStr.str() << "!\n";
 			return -1;
 		}
+
+		
 
 	}
 	std::clog.rdbuf(clogBuff);

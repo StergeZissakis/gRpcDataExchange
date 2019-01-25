@@ -31,31 +31,62 @@ namespace Exercise
 		return ::grpc::Status(::grpc::StatusCode::OK, "");
 	}
 
-	::grpc::Status DXServiceImpl::GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer)  
+	::grpc::Status DXServiceImpl::DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer)  
 	{
 		Logger log("GetFile", "DXServiceImpl");
 		(void) context;
-		(void) request;
 		std::string fname = request->filename();
-		std::ifstream f(fname, std::ios::in);
+		std::ifstream f(fname, std::ios::binary | std::ios::in);
 		if( !f.is_open() )
 		{
 			std::stringstream error;
 			error << "File [" << fname << "] does not exist on the server";
+			log.log(error.str());
 			return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
 		}
 
+		std::string buff(1024, '\0');
+		File file;
+		file.set_filename(fname);
 
-
-		return ::grpc::Status(::grpc::StatusCode::OK, "");
+		while(!f.eof())
+		{
+			f.read(&buff[0], 1024);
+			file.set_chunk(buff);
+			writer->Write(file);
+		}
+		
+		return grpc::Status::OK;
 	}
 
-	::grpc::Status DXServiceImpl::SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response)  
+	::grpc::Status DXServiceImpl::UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response)  
 	{
-		Logger log("SetFile", "DXServiceImpl");
+		Logger log("UploadFile", "DXServiceImpl");
 		(void) context;
-		(void) reader;
 		(void) response;
-		return ::grpc::Status(::grpc::StatusCode::OK, "");
+
+		File file;
+		reader->Read(&file);
+		std::ofstream fd(file.filename().c_str(), std::ios::binary | std::ios::out);
+		if( !fd.is_open() )
+		{
+			std::stringstream error;
+			error << "File [" << file.filename() << "] cannot be opened for writing";
+			log.log(error.str());
+			return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
+		}
+		fd.write(file.chunk().c_str(), file.chunk().size()); // ensure the first batch of bytes find their way into the server side file.:w
+		while(reader->Read(&file) )
+		{
+			if( !fd.write(file.chunk().c_str(), file.chunk().size()) )
+			{
+				std::stringstream error;
+				error << "File [" << file.filename() << "] cannot be written to";
+				log.log(error.str());
+				return ::grpc::Status(::grpc::StatusCode::UNKNOWN, error.str());
+			}
+		}
+		fd.close();
+		return grpc::Status::OK;
 	}
 }

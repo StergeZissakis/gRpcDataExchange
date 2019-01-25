@@ -21,8 +21,8 @@ namespace Exercise {
 static const char* DataExchange_method_names[] = {
   "/Exercise.DataExchange/GetParameters",
   "/Exercise.DataExchange/SetParameters",
-  "/Exercise.DataExchange/GetFile",
-  "/Exercise.DataExchange/SetFile",
+  "/Exercise.DataExchange/DownloadFile",
+  "/Exercise.DataExchange/UploadFile",
 };
 
 std::unique_ptr< DataExchange::Stub> DataExchange::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -34,8 +34,8 @@ std::unique_ptr< DataExchange::Stub> DataExchange::NewStub(const std::shared_ptr
 DataExchange::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_GetParameters_(DataExchange_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetParameters_(DataExchange_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetFile_(DataExchange_method_names[2], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_SetFile_(DataExchange_method_names[3], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
+  , rpcmethod_DownloadFile_(DataExchange_method_names[2], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_UploadFile_(DataExchange_method_names[3], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
   {}
 
 ::grpc::Status DataExchange::Stub::GetParameters(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::Exercise::Parameters* response) {
@@ -70,36 +70,36 @@ void DataExchange::Stub::experimental_async::SetParameters(::grpc::ClientContext
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_SetParameters_, context, request, false);
 }
 
-::grpc::ClientReader< ::Exercise::File>* DataExchange::Stub::GetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request) {
-  return ::grpc::internal::ClientReaderFactory< ::Exercise::File>::Create(channel_.get(), rpcmethod_GetFile_, context, request);
+::grpc::ClientReader< ::Exercise::File>* DataExchange::Stub::DownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request) {
+  return ::grpc::internal::ClientReaderFactory< ::Exercise::File>::Create(channel_.get(), rpcmethod_DownloadFile_, context, request);
 }
 
-void DataExchange::Stub::experimental_async::GetFile(::grpc::ClientContext* context, ::Exercise::File* request, ::grpc::experimental::ClientReadReactor< ::Exercise::File>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::Exercise::File>::Create(stub_->channel_.get(), stub_->rpcmethod_GetFile_, context, request, reactor);
+void DataExchange::Stub::experimental_async::DownloadFile(::grpc::ClientContext* context, ::Exercise::File* request, ::grpc::experimental::ClientReadReactor< ::Exercise::File>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::Exercise::File>::Create(stub_->channel_.get(), stub_->rpcmethod_DownloadFile_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::Exercise::File>* DataExchange::Stub::AsyncGetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_GetFile_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::Exercise::File>* DataExchange::Stub::AsyncDownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_DownloadFile_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::Exercise::File>* DataExchange::Stub::PrepareAsyncGetFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_GetFile_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::Exercise::File>* DataExchange::Stub::PrepareAsyncDownloadFileRaw(::grpc::ClientContext* context, const ::Exercise::File& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_DownloadFile_, context, request, false, nullptr);
 }
 
-::grpc::ClientWriter< ::Exercise::File>* DataExchange::Stub::SetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::ClientWriterFactory< ::Exercise::File>::Create(channel_.get(), rpcmethod_SetFile_, context, response);
+::grpc::ClientWriter< ::Exercise::File>* DataExchange::Stub::UploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::ClientWriterFactory< ::Exercise::File>::Create(channel_.get(), rpcmethod_UploadFile_, context, response);
 }
 
-void DataExchange::Stub::experimental_async::SetFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::experimental::ClientWriteReactor< ::Exercise::File>* reactor) {
-  ::grpc::internal::ClientCallbackWriterFactory< ::Exercise::File>::Create(stub_->channel_.get(), stub_->rpcmethod_SetFile_, context, response, reactor);
+void DataExchange::Stub::experimental_async::UploadFile(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::experimental::ClientWriteReactor< ::Exercise::File>* reactor) {
+  ::grpc::internal::ClientCallbackWriterFactory< ::Exercise::File>::Create(stub_->channel_.get(), stub_->rpcmethod_UploadFile_, context, response, reactor);
 }
 
-::grpc::ClientAsyncWriter< ::Exercise::File>* DataExchange::Stub::AsyncSetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncWriterFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_SetFile_, context, response, true, tag);
+::grpc::ClientAsyncWriter< ::Exercise::File>* DataExchange::Stub::AsyncUploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncWriterFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_UploadFile_, context, response, true, tag);
 }
 
-::grpc::ClientAsyncWriter< ::Exercise::File>* DataExchange::Stub::PrepareAsyncSetFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncWriterFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_SetFile_, context, response, false, nullptr);
+::grpc::ClientAsyncWriter< ::Exercise::File>* DataExchange::Stub::PrepareAsyncUploadFileRaw(::grpc::ClientContext* context, ::google::protobuf::Empty* response, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncWriterFactory< ::Exercise::File>::Create(channel_.get(), cq, rpcmethod_UploadFile_, context, response, false, nullptr);
 }
 
 DataExchange::Service::Service() {
@@ -117,12 +117,12 @@ DataExchange::Service::Service() {
       DataExchange_method_names[2],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< DataExchange::Service, ::Exercise::File, ::Exercise::File>(
-          std::mem_fn(&DataExchange::Service::GetFile), this)));
+          std::mem_fn(&DataExchange::Service::DownloadFile), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       DataExchange_method_names[3],
       ::grpc::internal::RpcMethod::CLIENT_STREAMING,
       new ::grpc::internal::ClientStreamingHandler< DataExchange::Service, ::Exercise::File, ::google::protobuf::Empty>(
-          std::mem_fn(&DataExchange::Service::SetFile), this)));
+          std::mem_fn(&DataExchange::Service::UploadFile), this)));
 }
 
 DataExchange::Service::~Service() {
@@ -142,14 +142,14 @@ DataExchange::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status DataExchange::Service::GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) {
+::grpc::Status DataExchange::Service::DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer) {
   (void) context;
   (void) request;
   (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status DataExchange::Service::SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) {
+::grpc::Status DataExchange::Service::UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response) {
   (void) context;
   (void) reader;
   (void) response;
