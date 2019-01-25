@@ -12,6 +12,7 @@ namespace Exercise
 
 	::grpc::Status DXServiceImpl::GetParameters(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::Exercise::Parameters* response) 
 	{
+		Logger log("GetParameters", "DXServiceImpl");
 		(void) context;
 		(void) request;
 		response->set_number(_sm_number);
@@ -21,6 +22,7 @@ namespace Exercise
 
 	::grpc::Status DXServiceImpl::SetParameters(::grpc::ServerContext* context, const ::Exercise::Parameters* request, ::google::protobuf::Empty* response)  
 	{
+		Logger log("SetParameters", "DXServiceImpl");
 		(void) context;
 		(void) response;
 
@@ -31,6 +33,7 @@ namespace Exercise
 
 	::grpc::Status DXServiceImpl::GetFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer)  
 	{
+		Logger log("GetFile", "DXServiceImpl");
 		(void) context;
 		(void) request;
 		std::string fname = request->filename();
@@ -49,6 +52,7 @@ namespace Exercise
 
 	::grpc::Status DXServiceImpl::SetFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response)  
 	{
+		Logger log("SetFile", "DXServiceImpl");
 		(void) context;
 		(void) reader;
 		(void) response;

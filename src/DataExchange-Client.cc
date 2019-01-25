@@ -23,7 +23,9 @@ Exercise::Parameters MakeParameters(long long num, const std::string& str)
 
 bool DXServiceClient::connectToServer()
 {
-	_connection = grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
+	std::stringstream url;
+	url << _serverAddress << ":" << _serverPort;
+	_connection = grpc::CreateChannel(url.str(), grpc::InsecureChannelCredentials());
 	_stub = Exercise::DataExchange::NewStub(_connection);
 	return (_stub)? true : false;
 }

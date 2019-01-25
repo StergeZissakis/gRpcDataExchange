@@ -4,7 +4,6 @@
 #include <string>
 #include <sstream>
 
-//#include <DataExchange.pb.h>
 #include <DataExchange.grpc.pb.h>
 
 namespace Exercise

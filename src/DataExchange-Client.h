@@ -14,7 +14,10 @@ Exercise::Parameters MakeParameters(long long numeric, const std::string& str);
 class DXServiceClient 
 {
 	public:
-		DXServiceClient() {}
+		DXServiceClient(const std::string& addr, int port)
+		: _serverAddress(addr), _serverPort(port)
+		{
+		}
 
 		virtual ~DXServiceClient() {}
 
@@ -25,11 +28,14 @@ class DXServiceClient
 
 		static google::protobuf::Empty EmptyObj;
 	private:
+		DXServiceClient();
 		typedef ::Exercise::DataExchange::Stub StubType;
 		typedef ::grpc::Channel ChannelType;
 		std::shared_ptr<ChannelType> _connection;
 		std::unique_ptr<StubType> _stub;
 
+		std::string _serverAddress;
+		int _serverPort;
 };
 
 #endif
