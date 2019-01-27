@@ -1,2 +1,7 @@
 *.o
 unitTests
+/*.out
+/*.file
+/*.log
+server_dir
+client_dir

@@ -4,7 +4,6 @@ STATICS=protobuf/libprotobuf.a protobuf/libprotoc.a  #libgrpc++.a libgrpc++_core
 
 SRC_DIR=$(shell pwd)
 
-
 SRC_COMN=$(wildcard *.pb.cc)
 SRV_SRCS=$(wildcard *Server*.cc) $(SRC_COMN)
 CLT_SRCS=$(wildcard *-Client*.cc) $(SRC_COMN)

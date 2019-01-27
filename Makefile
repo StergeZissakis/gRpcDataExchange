@@ -13,8 +13,4 @@ clean:
 	cd lib; rm -rf *
 
 test: install
-
-
-
-
-
+	$(MAKE) -C ./test test
