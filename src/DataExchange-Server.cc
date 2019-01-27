@@ -36,11 +36,12 @@ namespace Exercise
 
 	::grpc::Status DXServiceImpl::DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer)  
 	{
-		Logger log("GetFile", "DXServiceImpl");
+		Logger log("DownloadFile", "DXServiceImpl");
 		context->set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
 		std::string fname = request->filename();
-		std::ifstream f(fname, std::ios::binary);
-		if( !f.is_open() )
+		std::fstream f(fname, std::ios::binary | std::ios::in);
+
+		if( !f )
 		{
 			std::stringstream error;
 			error << "File [" << fname << "] does not exist on the server";
@@ -48,17 +49,27 @@ namespace Exercise
 			return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
 		}
 
-		std::string  buff;
-		buff.reserve(BUFFER_SIZE);
+		writer->SendInitialMetadata();
+
+		// upload the file
 		File file;
+		char buff[BUFFER_SIZE + 1] = { '\0' };
 		do
 		{
-			f.read(&buff[0], BUFFER_SIZE - 1);
-			file.set_chunk(buff);
-			writer->Write(file);
-		}while(f);
-		
-		return grpc::Status::OK;
+			f.read(buff, std::min(f.rdbuf()->in_avail(), BUFFER_SIZE));
+			if( f.gcount() )
+			{
+				std::string tmp(buff, f.gcount());
+				file.set_chunk(tmp);
+				if( !writer->Write(file) )
+				{
+					log.log("Failed to send data to the client");	
+					return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, "Write failed");
+				}
+			}
+		}while(!f.eof() && f.gcount());
+
+		return ::grpc::Status(::grpc::Status::OK);
 	}
 
 	::grpc::Status DXServiceImpl::UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response)  
@@ -85,13 +96,15 @@ namespace Exercise
 		file.chunk();
 		do
 		{
-			hasMore = reader->Read(&file);
-			if( hasMore && !fd.write(file.chunk().c_str(), file.chunk().size()) )
+			if( hasMore =  reader->Read(&file) )
 			{
-				std::stringstream error;
-				error << "File [" << file.filename() << "] cannot be written to";
-				log.log(error.str());
-				return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
+				if( !fd.write(file.chunk().c_str(), file.chunk().size()) )
+				{
+					std::stringstream error;
+					error << "File [" << file.filename() << "] cannot be written to";
+					log.log(error.str());
+					return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
+				}
 			}
 		}while(hasMore);
 

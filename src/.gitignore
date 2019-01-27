@@ -1,3 +1,5 @@
 *.o
 grpcServer
 grpcClient
+*.grpc.pb.*
+*.pb.*

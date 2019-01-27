@@ -9,5 +9,5 @@ include ../Makefile.base
 
 test: 
 	$(shell ./unitTests | tee unitTests.out 2>&1)
-	$(shell ./grpcClientServerTest.bash 2>&1 | tee grpcClientServerTest.out )
+	$(shell ./grpcClientServerTest.bash | tee grpcClientServerTest.out )
 	$(shell tail -f grpcClientServerTest.out)

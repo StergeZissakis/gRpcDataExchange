@@ -62,8 +62,12 @@ bool DXServiceClient::DownloadFile(const std::string& filename) // calls Downloa
 	grpc::ClientContext context;
 	context.set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
 	Exercise::File file = MakeFile(filename);
+
+
 	std::unique_ptr<grpc::ClientReader<Exercise::File > > reader(_stub->DownloadFile(&context, file));
-	std::fstream fd(file.filename(), std::ios::binary | std::ios::out);
+	reader->WaitForInitialMetadata();
+
+	std::fstream fd(filename.c_str(), std::ios::binary | std::ios::out);
 	if( !fd )
 	{
 		log.log("Failed to write to file: " + file.filename());
@@ -74,12 +78,13 @@ bool DXServiceClient::DownloadFile(const std::string& filename) // calls Downloa
 	do
 	{
 		hasMore = reader->Read(&file);
-		if(!fd.write(file.chunk().c_str(), file.chunk().size()))
+		if(hasMore && !fd.write(file.chunk().c_str(), file.chunk().size()))
 		{
 			log.log("Failed to write data to file");	
 			return false;
 		}
 	}while(hasMore);
+
 	return true;
 }
 
@@ -88,7 +93,7 @@ bool DXServiceClient::UploadFile(const std::string& filename) // calls UploadFil
 	Logger log("UploadFile", "DXServiceClient");
 
 	grpc::ClientContext context;
-	//context.set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
+	context.set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
 	std::unique_ptr<grpc::ClientWriter<Exercise::File > > writer(_stub->UploadFile(&context, &EmptyObj));
 	Exercise::File file = MakeFile(filename);
 
