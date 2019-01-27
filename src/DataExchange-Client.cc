@@ -1,14 +1,18 @@
 #include <iostream>
 #include <fstream>
+#include <iterator>
+#include <memory>
+#include <algorithm>
 #include <DataExchange-Client.h>
 #include <utils/Logger.h>
 
+google::protobuf::Empty DXServiceClient::EmptyObj;
+#define BUFFER_SIZE  2048
 
 Exercise::File MakeFile(const std::string& name)
 {
 	Exercise::File f;
 	f.set_filename(name);
-	f.set_chunk(std::string());
 	return f;
 }
 
@@ -51,61 +55,77 @@ bool DXServiceClient::GetParameters(long long& num, std::string& str) const
 	return status.ok();
 }
 
-bool DXServiceClient::UploadFile(const std::string& filename) // calls UploadFile on the server, thus it is a server upstream flow.
-{
-	Logger log("UploadFile", "DXServiceClient");
-
-	grpc::ClientContext context;
-	Exercise::File file = MakeFile(filename);
-	std::unique_ptr<grpc::ClientWriter<Exercise::File > > writer(_stub->UploadFile(&context, &EmptyObj));
-
-	std::ifstream fd(filename, std::ios::binary | std::ios::in);
-	if( !fd.is_open() )
-	{
-		log.log("Failed to read from file: " + filename);
-		return false;
-	}
-
-
-	char buff[1024];
-	while(!fd.eof())
-	{
-		fd.read(buff, 1024);
-		file.set_chunk(buff);
-		if( !writer->Write(file) )
-		{
-			log.log("Failed to send to the server");	
-			return false;
-		}
-	}
-	return writer->WritesDone();
-}
-
 bool DXServiceClient::DownloadFile(const std::string& filename) // calls DownloadFile on the server, thus it is a server downstream flow.
 {
 	Logger log("DownloadFile", "DXServiceClient");
 
 	grpc::ClientContext context;
+	context.set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
 	Exercise::File file = MakeFile(filename);
 	std::unique_ptr<grpc::ClientReader<Exercise::File > > reader(_stub->DownloadFile(&context, file));
-	if( !reader->Read(&file) )
-	{
-		log.log("Failed to read the first packet");	
-		return false;
-	}
-	std::ofstream fd(file.filename(), std::ios::binary | std::ios::out);
-	if( !fd.is_open() )
+	std::fstream fd(file.filename(), std::ios::binary | std::ios::out);
+	if( !fd )
 	{
 		log.log("Failed to write to file: " + file.filename());
 		return false;
 	}
 
-	fd.write(file.chunk().c_str(), file.chunk().size());
-	while(reader->Read(&file)) 
+	bool hasMore = true;
+	do
 	{
-		fd.write(file.chunk().c_str(), file.chunk().size());
-	}
-	return reader->Finish().ok();
+		hasMore = reader->Read(&file);
+		if(!fd.write(file.chunk().c_str(), file.chunk().size()))
+		{
+			log.log("Failed to write data to file");	
+			return false;
+		}
+	}while(hasMore);
+	return true;
 }
 
-google::protobuf::Empty DXServiceClient::EmptyObj;
+bool DXServiceClient::UploadFile(const std::string& filename) // calls UploadFile on the server, thus it is a server upstream flow.
+{
+	Logger log("UploadFile", "DXServiceClient");
+
+	grpc::ClientContext context;
+	//context.set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
+	std::unique_ptr<grpc::ClientWriter<Exercise::File > > writer(_stub->UploadFile(&context, &EmptyObj));
+	Exercise::File file = MakeFile(filename);
+
+	writer->WaitForInitialMetadata();
+
+	std::fstream fd(filename, std::ios::binary | std::ios::in);
+	if( !fd )
+	{
+		log.log("Failed to read from file: " + filename);
+		return false;
+	}
+
+	// Send the file name
+	if( !writer->Write(file) )
+	{
+		log.log("Failed to send file name to the server");	
+		return false;
+	}
+
+	// upload the file
+	char buff[BUFFER_SIZE + 1] = { '\0' };
+	do
+	{
+		fd.read(buff, std::min(fd.rdbuf()->in_avail(), BUFFER_SIZE));
+		if( fd.gcount() )
+		{
+			std::string tmp(buff, fd.gcount());
+			file.set_chunk(tmp);
+			if( !writer->Write(file) )
+			{
+				log.log("Failed to send data to the server");	
+				return false;
+			}
+		}
+	}while(!fd.eof() && fd.gcount());
+
+	bool status = writer->WritesDone();
+	writer->Finish();
+	return status;
+}

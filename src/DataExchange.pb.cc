@@ -24,6 +24,8 @@ class FileDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<File>
       _instance;
+  ::google::protobuf::internal::ArenaStringPtr filename_;
+  ::google::protobuf::internal::ArenaStringPtr chunk_;
 } _File_default_instance_;
 class ParametersDefaultTypeInternal {
  public:
@@ -71,10 +73,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, _internal_metadata_),
   ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, _oneof_case_[0]),
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, filename_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, chunk_),
+  offsetof(::Exercise::FileDefaultTypeInternal, filename_),
+  offsetof(::Exercise::FileDefaultTypeInternal, chunk_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::File, fileNameOrChunk_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Exercise::Parameters, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -85,7 +88,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Exercise::File)},
-  { 7, -1, sizeof(::Exercise::Parameters)},
+  { 8, -1, sizeof(::Exercise::Parameters)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -115,19 +118,19 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\022DataExchange.proto\022\010Exercise\032\033google/p"
-      "rotobuf/empty.proto\"\'\n\004File\022\020\n\010filename\030"
-      "\001 \001(\t\022\r\n\005chunk\030\002 \001(\014\"*\n\nParameters\022\016\n\006nu"
-      "mber\030\001 \001(\003\022\014\n\004text\030\002 \001(\t2\376\001\n\014DataExchang"
-      "e\022\?\n\rGetParameters\022\026.google.protobuf.Emp"
-      "ty\032\024.Exercise.Parameters\"\000\022\?\n\rSetParamet"
-      "ers\022\024.Exercise.Parameters\032\026.google.proto"
-      "buf.Empty\"\000\0222\n\014DownloadFile\022\016.Exercise.F"
-      "ile\032\016.Exercise.File\"\0000\001\0228\n\nUploadFile\022\016."
-      "Exercise.File\032\026.google.protobuf.Empty\"\000("
-      "\001b\006proto3"
+      "rotobuf/empty.proto\">\n\004File\022\022\n\010filename\030"
+      "\001 \001(\tH\000\022\017\n\005chunk\030\002 \001(\014H\000B\021\n\017fileNameOrCh"
+      "unk\"*\n\nParameters\022\016\n\006number\030\001 \001(\003\022\014\n\004tex"
+      "t\030\002 \001(\t2\376\001\n\014DataExchange\022\?\n\rGetParameter"
+      "s\022\026.google.protobuf.Empty\032\024.Exercise.Par"
+      "ameters\"\000\022\?\n\rSetParameters\022\024.Exercise.Pa"
+      "rameters\032\026.google.protobuf.Empty\"\000\0222\n\014Do"
+      "wnloadFile\022\016.Exercise.File\032\016.Exercise.Fi"
+      "le\"\0000\001\0228\n\nUploadFile\022\016.Exercise.File\032\026.g"
+      "oogle.protobuf.Empty\"\000(\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 409);
+      descriptor, 432);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DataExchange.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
@@ -149,6 +152,10 @@ namespace Exercise {
 // ===================================================================
 
 void File::InitAsDefaultInstance() {
+  ::Exercise::_File_default_instance_.filename_.UnsafeSetDefault(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::Exercise::_File_default_instance_.chunk_.UnsafeSetDefault(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int File::kFilenameFieldNumber;
@@ -166,20 +173,25 @@ File::File(const File& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  filename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.filename().size() > 0) {
-    filename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.filename_);
-  }
-  chunk_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.chunk().size() > 0) {
-    chunk_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.chunk_);
+  clear_has_fileNameOrChunk();
+  switch (from.fileNameOrChunk_case()) {
+    case kFilename: {
+      set_filename(from.filename());
+      break;
+    }
+    case kChunk: {
+      set_chunk(from.chunk());
+      break;
+    }
+    case FILENAMEORCHUNK_NOT_SET: {
+      break;
+    }
   }
   // @@protoc_insertion_point(copy_constructor:Exercise.File)
 }
 
 void File::SharedCtor() {
-  filename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  chunk_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_fileNameOrChunk();
 }
 
 File::~File() {
@@ -188,8 +200,9 @@ File::~File() {
 }
 
 void File::SharedDtor() {
-  filename_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  chunk_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (has_fileNameOrChunk()) {
+    clear_fileNameOrChunk();
+  }
 }
 
 void File::SetCachedSize(int size) const {
@@ -206,14 +219,32 @@ const File& File::default_instance() {
 }
 
 
+void File::clear_fileNameOrChunk() {
+// @@protoc_insertion_point(one_of_clear_start:Exercise.File)
+  switch (fileNameOrChunk_case()) {
+    case kFilename: {
+      fileNameOrChunk_.filename_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+      break;
+    }
+    case kChunk: {
+      fileNameOrChunk_.chunk_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+      break;
+    }
+    case FILENAMEORCHUNK_NOT_SET: {
+      break;
+    }
+  }
+  _oneof_case_[0] = FILENAMEORCHUNK_NOT_SET;
+}
+
+
 void File::Clear() {
 // @@protoc_insertion_point(message_clear_start:Exercise.File)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  filename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  chunk_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_fileNameOrChunk();
   _internal_metadata_.Clear();
 }
 
@@ -282,7 +313,7 @@ void File::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   // string filename = 1;
-  if (this->filename().size() > 0) {
+  if (has_filename()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->filename().data(), static_cast<int>(this->filename().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
@@ -292,7 +323,7 @@ void File::SerializeWithCachedSizes(
   }
 
   // bytes chunk = 2;
-  if (this->chunk().size() > 0) {
+  if (has_chunk()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       2, this->chunk(), output);
   }
@@ -312,7 +343,7 @@ void File::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   // string filename = 1;
-  if (this->filename().size() > 0) {
+  if (has_filename()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->filename().data(), static_cast<int>(this->filename().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
@@ -323,7 +354,7 @@ void File::SerializeWithCachedSizes(
   }
 
   // bytes chunk = 2;
-  if (this->chunk().size() > 0) {
+  if (has_chunk()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         2, this->chunk(), target);
@@ -346,20 +377,25 @@ size_t File::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string filename = 1;
-  if (this->filename().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->filename());
+  switch (fileNameOrChunk_case()) {
+    // string filename = 1;
+    case kFilename: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->filename());
+      break;
+    }
+    // bytes chunk = 2;
+    case kChunk: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->chunk());
+      break;
+    }
+    case FILENAMEORCHUNK_NOT_SET: {
+      break;
+    }
   }
-
-  // bytes chunk = 2;
-  if (this->chunk().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->chunk());
-  }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -387,13 +423,18 @@ void File::MergeFrom(const File& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.filename().size() > 0) {
-
-    filename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.filename_);
-  }
-  if (from.chunk().size() > 0) {
-
-    chunk_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.chunk_);
+  switch (from.fileNameOrChunk_case()) {
+    case kFilename: {
+      set_filename(from.filename());
+      break;
+    }
+    case kChunk: {
+      set_chunk(from.chunk());
+      break;
+    }
+    case FILENAMEORCHUNK_NOT_SET: {
+      break;
+    }
   }
 }
 
@@ -421,10 +462,8 @@ void File::Swap(File* other) {
 }
 void File::InternalSwap(File* other) {
   using std::swap;
-  filename_.Swap(&other->filename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  chunk_.Swap(&other->chunk_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  swap(fileNameOrChunk_, other->fileNameOrChunk_);
+  swap(_oneof_case_[0], other->_oneof_case_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

@@ -2,9 +2,12 @@
 #include <fstream>
 #include <DataExchange-Server.h>
 #include <utils/Logger.h>
+#include <memory>
 
 namespace Exercise
 {
+
+#define BUFFER_SIZE  2048
 
 	// Statics
 	int DXServiceImpl::_sm_number = 0;
@@ -34,9 +37,9 @@ namespace Exercise
 	::grpc::Status DXServiceImpl::DownloadFile(::grpc::ServerContext* context, const ::Exercise::File* request, ::grpc::ServerWriter< ::Exercise::File>* writer)  
 	{
 		Logger log("GetFile", "DXServiceImpl");
-		(void) context;
+		context->set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
 		std::string fname = request->filename();
-		std::ifstream f(fname, std::ios::binary | std::ios::in);
+		std::ifstream f(fname, std::ios::binary);
 		if( !f.is_open() )
 		{
 			std::stringstream error;
@@ -45,16 +48,15 @@ namespace Exercise
 			return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
 		}
 
-		std::string buff(1024, '\0');
+		std::string  buff;
+		buff.reserve(BUFFER_SIZE);
 		File file;
-		file.set_filename(fname);
-
-		while(!f.eof())
+		do
 		{
-			f.read(&buff[0], 1024);
+			f.read(&buff[0], BUFFER_SIZE - 1);
 			file.set_chunk(buff);
 			writer->Write(file);
-		}
+		}while(f);
 		
 		return grpc::Status::OK;
 	}
@@ -62,31 +64,37 @@ namespace Exercise
 	::grpc::Status DXServiceImpl::UploadFile(::grpc::ServerContext* context, ::grpc::ServerReader< ::Exercise::File>* reader, ::google::protobuf::Empty* response)  
 	{
 		Logger log("UploadFile", "DXServiceImpl");
-		(void) context;
 		(void) response;
+		context->set_compression_algorithm(GRPC_COMPRESS_STREAM_GZIP);
+
+		reader->SendInitialMetadata();
 
 		File file;
-		reader->Read(&file);
-		std::ofstream fd(file.filename().c_str(), std::ios::binary | std::ios::out);
-		if( !fd.is_open() )
+		// read the filename
+		bool hasMore = reader->Read(&file);
+		std::fstream fd(file.filename().c_str(), std::ios::binary | std::ios::out);
+		if( !fd )
 		{
 			std::stringstream error;
 			error << "File [" << file.filename() << "] cannot be opened for writing";
 			log.log(error.str());
 			return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
 		}
-		fd.write(file.chunk().c_str(), file.chunk().size()); // ensure the first batch of bytes find their way into the server side file.:w
-		while(reader->Read(&file) )
+		// perform the upload
+		file.set_chunk("");
+		file.chunk();
+		do
 		{
-			if( !fd.write(file.chunk().c_str(), file.chunk().size()) )
+			hasMore = reader->Read(&file);
+			if( hasMore && !fd.write(file.chunk().c_str(), file.chunk().size()) )
 			{
 				std::stringstream error;
 				error << "File [" << file.filename() << "] cannot be written to";
 				log.log(error.str());
-				return ::grpc::Status(::grpc::StatusCode::UNKNOWN, error.str());
+				return ::grpc::Status(::grpc::StatusCode::NOT_FOUND, error.str());
 			}
-		}
-		fd.close();
-		return grpc::Status::OK;
+		}while(hasMore);
+
+		return grpc::Status(grpc::Status::OK);
 	}
 }

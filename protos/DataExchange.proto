@@ -5,10 +5,14 @@ import "google/protobuf/empty.proto";
 
 package Exercise;
 
+
 message File 
 {
-	string filename = 1;
-	bytes chunk = 2;
+	oneof fileNameOrChunk 
+	{
+		string filename = 1;
+		bytes chunk = 2;
+	}
 }
 
 message Parameters 
