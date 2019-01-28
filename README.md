@@ -18,7 +18,7 @@ Also the client can set and retrieve values (a numeric and a string, grouped in 
 
 # How to Build & Automatically Test
 cd into the cloned repo and issue
-> make install test
+"make install test"
 This should download and build all the peripheral packages, such as gRPC itself and Google Protocol Buffers.
 Once everything is build, (make) test will run the .bash script inside the test directory that will perform all possible actions on the server. The output of the script is tee'ed to a file too.
 Look for .log and .out files inside the "client_dir" and "server_dir" under the test directory. 
@@ -31,15 +31,15 @@ In the bin directory, there are the following binaries, apart from all the other
 Please use the "-h" option for a usage/help menu of each command.
 
 * Start the server:
-** /> bin/grpcServer &
+** "grpcServer &"
 *** It should be displaying the IP and port the server is listening at.
 *** Please note that the directory you start the server in, does matter. This where all uploaded files are placed. Also this is place to put files in for downloading off the server.
 
 * Using the client
-** test> ../bin/grpcClient -h
+** "grpcClient -h"
 *** will display the help/usage menu of the client. There are several poarameters, some for non-streaming calls and some for streaming calls.
 *** To upload a file please issue:
-*** > grpcClient -uf <filename>
+*** "grpcClient -uf filename"
 
 # Black Box Tests VS Unit Tests
 * Black Box Tests
