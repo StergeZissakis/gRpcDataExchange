@@ -81,9 +81,9 @@ mkdir -p ./$CLT_DIR
 
 echo "Starting Server..."
 $(cd "$SRV_DIR"; nohup "$SRV_BIN" > grpcServer.out 2>&1&)
-##echo "Generating test data files. Please be wait, it may take several minutes...."
-##$(cd $CLT_DIR; head -c 2G < /dev/urandom > $BIG_FILE)
-##$(cd $CLT_DIR; head -c 56M < /dev/urandom > $REG_FILE)
+echo "Generating test data files. Please be wait, it may take several minutes...."
+$(cd $CLT_DIR; head -c 2G < /dev/urandom > $BIG_FILE)
+$(cd $CLT_DIR; head -c 56M < /dev/urandom > $REG_FILE)
 $(cp "../README.md" "./$CLT_DIR/$SML_FILE") # use our README.md as a small file; it is smaller than the current buffer size
 
 #
@@ -101,25 +101,25 @@ $(cd "$CLT_DIR"; "$CLT_BIN" -num 10 -text Stergio)
 #
 echo "Testing upload..."
 echo "Uploading big file (size > 1GB)"
-#uploadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$BIG_FILE" "$SRV_DIR"
+uploadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$BIG_FILE" "$SRV_DIR"
 echo "Uploading regular file (size > 50MB)"
 uploadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$REG_FILE" "$SRV_DIR"
 echo "Uploading small file (size < 1KB)"
 uploadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$SML_FILE" "$SRV_DIR"
 
 # Delete all data files in $CLT_DIR
-#$(cd $CLT_DIR; rm -f ./$BIG_FILE ./$REG_FILE ./$SML_FILE)
+$(cd $CLT_DIR; rm -f ./$BIG_FILE ./$REG_FILE ./$SML_FILE)
 
 #
 # Download the files back into the client dir, from the server dir
 #
 
-##echo "Testing download..."
-##echo "Download big file (size > 1GB)"
-##downloadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$BIG_FILE" "$SRV_DIR"
-##echo "Download regular file (size > 50MB)"
-##downloadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$REG_FILE" "$SRV_DIR"
-##echo "Download small file (size < 1KB)"
-##downloadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$SML_FILE" "$SRV_DIR"
+echo "Testing download..."
+echo "Download big file (size > 1GB)"
+downloadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$BIG_FILE" "$SRV_DIR"
+echo "Download regular file (size > 50MB)"
+downloadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$REG_FILE" "$SRV_DIR"
+echo "Download small file (size < 1KB)"
+downloadFileAndCompare "$CLT_DIR" "$CLT_BIN" "$SML_FILE" "$SRV_DIR"
 
 pkill "$SRV_BIN"
