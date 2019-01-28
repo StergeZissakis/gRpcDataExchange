@@ -1,4 +1,4 @@
-BUILD_DIRECTORIES= protos share src
+BUILD_DIRECTORIES=share protos src
 
 
 all:
