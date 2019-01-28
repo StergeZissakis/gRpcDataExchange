@@ -25,7 +25,7 @@ install: $(BIN) $(LIB) $(SRV_BIN) $(CLT_BIN)
 	$(foreach bin,$(CLT_BIN), install $(bin) $(base_dir)/bin/; )
 
 clean: 
-	rm -f $(OBJS) $(LIB) $(BIN) $(SRV_BIN) $(CLT_BIN)
+	rm -f $(OBJS) $(LIB) $(BIN) $(SRV_BIN) $(CLT_BIN) $(SRC_CLEAN)
 
 $(SRC_DIR)/%.o:$(SRC_DIR)/%.cc
 	$(GCC) $(CPPFLAGS) -c $< -o $@

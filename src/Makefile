@@ -10,4 +10,6 @@ CLT_SRCS=$(wildcard *-Client*.cc) $(SRC_COMN)
 SRV_BIN=$(SRC_DIR)/grpcServer
 CLT_BIN=$(SRC_DIR)/grpcClient
 
+SRC_CLEAN=$(SRC_COMN) $(subst %.cc,%.h,$(SRC_COMN))
+
 include ../Makefile.base

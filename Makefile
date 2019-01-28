@@ -11,9 +11,10 @@ clean:
 	$(foreach dir,$(BUILD_DIRECTORIES), $(MAKE) -C $(dir) $@; )
 	cd bin; rm -rf *
 	cd lib; rm -rf *
-	find . -name "*.log" -type f | xargs rm
-	find . -name "*.out" -type f | xargs rm
-	rm -rf `git ls-files include --others | sed -e 's/\/.*$//' | sort | uniq`	
+	find . -name "*.log" -type f | xargs rm -f
+	find . -name "*.out" -type f | xargs rm -f
+	cd include; rm -rf `git ls-files . --others | sed -e 's/\/.*//' | sort | uniq`	
+	cd lib; rm -rf *
 
 test: install
 	$(MAKE) -C ./test test
