@@ -1,4 +1,4 @@
-*.log
 bin/*
-lib/*
 *.swp
+*.out
+*.log
