@@ -1,4 +1,4 @@
-PBC=protoc
+PBC=../bin/protoc
 CCP=../bin/grpc_cpp_plugin
 
 

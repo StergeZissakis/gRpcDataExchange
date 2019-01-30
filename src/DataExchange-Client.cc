@@ -7,7 +7,7 @@
 #include <utils/Logger.h>
 
 google::protobuf::Empty DXServiceClient::EmptyObj;
-#define BUFFER_SIZE  2048
+const std::streamsize BUFFER_SIZE =  2048;
 
 Exercise::File MakeFile(const std::string& name)
 {

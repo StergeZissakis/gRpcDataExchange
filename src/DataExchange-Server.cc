@@ -7,7 +7,7 @@
 namespace Exercise
 {
 
-#define BUFFER_SIZE  2048
+const std::streamsize BUFFER_SIZE = 2048;
 
 	// Statics
 	int DXServiceImpl::_sm_number = 0;

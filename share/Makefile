@@ -35,7 +35,7 @@ pwd=$(shell pwd)
 prfx=$(shell dirname $(pwd)  )
 
 grpc_build:
-	cd grpc/third_party/protobuf; ./autogen.sh; 
+	cd grpc/third_party/protobuf; ./autogen.sh
 	cd grpc/third_party/protobuf; ./configure --prefix=$(prfx)
 	$(MAKE) -C grpc/third_party/protobuf install
 	$(MAKE) -C grpc prefix=$(prfx) install
