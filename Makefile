@@ -1,6 +1,5 @@
 BUILD_DIRECTORIES=share protos src
 
-
 all:
 	$(foreach dir,$(BUILD_DIRECTORIES), $(MAKE) -C $(dir) $@; )
 

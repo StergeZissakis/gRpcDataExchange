@@ -91,9 +91,11 @@ $(cp "../README.md" "./$CLT_DIR/$SML_FILE") # use our README.md as a small file;
 #
 echo "Testing Parameter passing..."
 echo "-- Default parameters: num and text are intially 0 and blank."
-$(cd "$CLT_DIR"; "$CLT_BIN")
+cd "$CLT_DIR"; 
+"$CLT_BIN"
 echo "-- Set num and text to 10 and \"Stergio\", respectively. The inital values must be as per the previous call."
-$(cd "$CLT_DIR"; "$CLT_BIN" -num 10 -text Stergio)
+"$CLT_BIN" -num 10 -text "Stergio)"
+cd -
 
 
 #
