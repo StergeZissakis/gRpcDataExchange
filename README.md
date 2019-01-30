@@ -9,14 +9,7 @@ Also the client can set and retrieve values (a numeric and a string, grouped in 
 
 # Requirements:
 * Debian/Raspbian development environment with the following isntalled:
-`apt install git`
-`apt install g++ `
-`apt install make`
-`apt install cmake`
-`apt install curl wget`
-`apt install autogen`
-`apt install autoconf`
-`apt install libtool`
+`apt install git g++ make cmake curl wget autogen autoconf libtool`
 
 # Environment
 If you are to run the client/server binaries manually, then the following env vars are needed:
