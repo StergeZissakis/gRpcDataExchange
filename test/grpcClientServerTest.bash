@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/../lib
+
 function checkResult () {
 	result=$1
 	OK=$2
