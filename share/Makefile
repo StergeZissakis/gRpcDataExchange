@@ -27,7 +27,7 @@ googletest/libgtest.a:
 
 grpc_get: 
 	if [ ! -d "./grpc" ]; then                                                              \
-	  git clone   https://github.com/grpc/grpc -b $(shell curl -L https://grpc.io/release); \
+	  git clone   https://github.com/grpc/grpc -b v1.43.2; \
 	fi
 	cd grpc; git submodule update --init;                                                 
 
