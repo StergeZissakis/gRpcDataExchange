@@ -3,3 +3,12 @@
 /grpc
 /grpc++
 /grpcpp
+/absl
+/ares.h
+/ares_build.h
+/ares_dns.h
+/ares_rules.h
+/ares_version.h
+/re2
+/zconf.h
+/zlib.h
